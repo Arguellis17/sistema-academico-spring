@@ -20,10 +20,13 @@ public class Carrera {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int codigoCarrera;
 
+    // Preguntarle al profesor si eso se pone XDDDDDDD
+    
     // Indica que la relación es de uno a muchos
-    @OneToMany(mappedBy = "codigoCarrera")
+    //@OneToMany(mappedBy = "codigoCarrera")
     // Lista de estudiantes
-    private List<Estudiante> estudiantes;
+    //private List<Estudiante> estudiantes;
+    
     private String nombreCarrera;
     private int duracion;
     //private Departamento codigoDepartamento;
