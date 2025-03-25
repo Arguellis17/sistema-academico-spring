@@ -16,15 +16,11 @@ public class Docente extends Persona{
     private Long codigoDocente;
 
     @ManyToOne
-    private Departamento departamento;
+    private Departamento codigoDepartamento;
 
     private String titulo;
     private String especializacion;
     private int cargaHoraria;
 
-    @OneToMany
-    private List<AsignacionDocente> asignaciones;
 
-    @OneToMany
-    private List<Evaluacion> historialEvaluaciones;
 }

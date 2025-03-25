@@ -4,20 +4,22 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Entity
+import java.util.Date;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Facultad {
+@Entity
+
+public class Evaluacion {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long codigoFacultad;
-
-    private String nombre;
-    
+    private Long codigoEvaluacion;
+    private String tipo;
+    private float ponderacion;
+    private Curso codigoCurso;
+    private Date fechaEvaluacion;
 }
