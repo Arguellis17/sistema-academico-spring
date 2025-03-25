@@ -2,8 +2,6 @@ package sistemaAcademico.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -13,9 +11,11 @@ import java.util.List;
 
 public class Docente extends Persona{
 
+    @Id
     private String codigoDocente;
 
     @ManyToOne
+    @JoinColumn(name = "codigo_departamento")
     private Departamento departamento;
 
     private String titulo;
@@ -23,7 +23,7 @@ public class Docente extends Persona{
     private int cargaHoraria;
 
     @OneToMany(mappedBy = "docente")
-    private List<Curso> cursosAsignados;
+    private List<AsignacionDocente> asignaciones;
 
     @OneToMany(mappedBy = "docente")
     private List<Evaluacion> historialEvaluaciones;
