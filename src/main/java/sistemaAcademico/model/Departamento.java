@@ -23,6 +23,6 @@ public class Departamento {
     @ManyToOne
     private Facultad facultad;
 
-    @OneToMany(mappedBy = "departamento")
+    @OneToMany
     private List<Docente> docentes;
 }
