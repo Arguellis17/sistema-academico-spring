@@ -18,6 +18,8 @@ public class Departamento {
     private String codigoDepartamento;
     private String nombre;
 
+    // Una facultad tiene muchos departamentos
+    // La anotacion many to one indica que muchos departamentos pertenecen a una facultad
     @ManyToOne
     private Facultad facultad;
 
