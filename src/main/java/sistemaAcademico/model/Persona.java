@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Persona {
     @Id
-    private String documento;
+    private Long documento;
 
     @Enumerated(EnumType.STRING)
     private TipoDocumento tipoDocumento;
