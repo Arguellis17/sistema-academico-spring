@@ -24,7 +24,7 @@ public class Estudiante extends Persona{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int codigoEstudiante;
+    private Long codigoEstudiante;
     // @ManyToOne: Indica que la relación es de muchos a uno
     @ManyToOne
     private Carrera codigoCarrera;

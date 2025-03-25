@@ -12,19 +12,19 @@ import java.util.List;
 public class Docente extends Persona{
 
     @Id
-    private String codigoDocente;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long codigoDocente;
 
     @ManyToOne
-    @JoinColumn(name = "codigo_departamento")
     private Departamento departamento;
 
     private String titulo;
     private String especializacion;
     private int cargaHoraria;
 
-    @OneToMany(mappedBy = "docente")
+    @OneToMany
     private List<AsignacionDocente> asignaciones;
 
-    @OneToMany(mappedBy = "docente")
+    @OneToMany
     private List<Evaluacion> historialEvaluaciones;
 }

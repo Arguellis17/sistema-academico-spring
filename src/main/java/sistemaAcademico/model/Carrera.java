@@ -18,7 +18,7 @@ public class Carrera {
     @Id
     // Esto indica que el atributo es la clave primaria de la tabla y manejara autoincremento
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int codigoCarrera;
+    private Long codigoCarrera;
 
     // Preguntarle al profesor si eso se pone XDDDDDDD
     
@@ -26,7 +26,7 @@ public class Carrera {
     //@OneToMany(mappedBy = "codigoCarrera")
     // Lista de estudiantes
     //private List<Estudiante> estudiantes;
-    
+
     private String nombreCarrera;
     private int duracion;
     //private Departamento codigoDepartamento;
