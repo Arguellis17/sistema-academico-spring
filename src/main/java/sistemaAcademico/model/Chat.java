@@ -13,6 +13,7 @@ import java.util.Date;
 public class Chat {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long codigoChat;
     private Date fechaCreacion;
 

@@ -9,6 +9,7 @@ import lombok.*;
 @AllArgsConstructor
 public class Usuario {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long codigoUsuario;
 
     private String personaDocumento;

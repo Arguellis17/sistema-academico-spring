@@ -10,6 +10,7 @@ import java.util.Date;
 @AllArgsConstructor
 public class AsignacionDocente{
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long codigoAsignacionDocente;
     private Date fecha;
     private int cargaHoraria;

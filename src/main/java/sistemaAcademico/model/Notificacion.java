@@ -11,6 +11,7 @@ import java.util.Date;
 @AllArgsConstructor
 public class Notificacion {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long codigoNotificacion; // Clave primaria de tipo Long
 
     private String mensaje;

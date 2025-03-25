@@ -7,6 +7,7 @@ import java.util.List;
 
 public class Persona {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long documento;
 
     @Enumerated(EnumType.STRING)

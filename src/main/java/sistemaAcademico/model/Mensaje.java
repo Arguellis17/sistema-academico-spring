@@ -11,6 +11,7 @@ import java.util.Date;
 
 public class Mensaje {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long  codigoMensaje;
 
     private String contenido;

@@ -10,6 +10,7 @@ import java.util.List;
 @AllArgsConstructor
 public class Rol {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long codigoRol;
 
     private String nombre;
