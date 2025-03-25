@@ -12,7 +12,8 @@ import java.util.Date;
 
 public class Chat {
 
-    private String codigoChat;
+    @Id
+    private Long codigoChat;
     private Date fechaCreacion;
 
     @ManyToOne
