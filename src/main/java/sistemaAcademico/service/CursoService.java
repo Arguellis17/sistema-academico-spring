@@ -1,9 +1,11 @@
 package sistemaAcademico.service;
 
+import org.springframework.stereotype.Service;
 import sistemaAcademico.model.Curso;
 
 import java.util.List;
 
+@Service
 public interface CursoService extends CrudService<Curso, Long>{
     // Buscar cursos por carrera
     List<Curso> findByCodigoCarrera_Id(Long codigoCarrera);
