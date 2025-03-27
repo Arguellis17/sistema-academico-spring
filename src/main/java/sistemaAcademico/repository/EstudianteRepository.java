@@ -10,9 +10,9 @@ import java.util.List;
 public interface EstudianteRepository extends JpaRepository<Estudiante, Long> {
 
     // Buscar estudiantes por código de carrera
-    List<Estudiante> findByCodigoCarreraCodigoCarrera(Long codigoCarrera);
+    //List<Estudiante> findByCodigoCarreraCodigoCarrera(Long codigoCarrera);
 
     // Buscar estudiantes por semestre
-    List<Estudiante> findBySemestre(int semestre);
+    //List<Estudiante> findBySemestre(int semestre);
 
 }

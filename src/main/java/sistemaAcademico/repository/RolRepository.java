@@ -9,7 +9,7 @@ import java.util.List;
 @Repository
 public interface RolRepository extends JpaRepository<Rol, Long> {
 
-    public List<Rol> findByNombre(String nombre);
+    //public List<Rol> findByNombre(String nombre);
 
-    public List<Rol> findByTipoRol(String tipoRol);
+    //public List<Rol> findByTipoRol(String tipoRol);
 }

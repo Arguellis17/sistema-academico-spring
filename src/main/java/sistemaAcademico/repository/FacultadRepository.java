@@ -9,5 +9,5 @@ import java.util.List;
 @Repository
 public interface FacultadRepository extends JpaRepository<Facultad, Long> {
 
-    public List<Facultad> findByNombre(String nombre);
+    //public List<Facultad> findByNombre(String nombre);
 }

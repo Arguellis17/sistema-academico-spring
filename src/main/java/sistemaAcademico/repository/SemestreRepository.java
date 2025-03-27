@@ -10,9 +10,9 @@ import java.util.List;
 @Repository
 public interface SemestreRepository extends JpaRepository<Semestre, Long> {
 
-    public List<Semestre> findByNumeroSemestre(int numeroSemestre);
+    //public List<Semestre> findByNumeroSemestre(int numeroSemestre);
 
-    public List<Semestre> findByFechaInicio(Date fechaInicio);
+    //public List<Semestre> findByFechaInicio(Date fechaInicio);
 
-    public List<Semestre> findByFechaFin(Date fechaFin);
+    //public List<Semestre> findByFechaFin(Date fechaFin);
 }

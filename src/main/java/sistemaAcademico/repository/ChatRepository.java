@@ -2,13 +2,13 @@ package sistemaAcademico.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import sistemaAcademico.model.Matricula;
+import sistemaAcademico.model.Chat;
 
 import java.util.Date;
 import java.util.List;
 
 @Repository
-public interface MatriculaRepository extends JpaRepository<Matricula, Long> {
+public interface ChatRepository extends JpaRepository<Chat, Long> {
 
-    //public List<Matricula> findByFechaMatricula(Date fechaMatricula);
+    //public List<Chat> findByFechaCreacion(Date fechaCreacion);
 }

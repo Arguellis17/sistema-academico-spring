@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public interface ProgramaRepository extends JpaRepository<Programa, Long> {
 
-    public List<Programa> findByNombre(String nombre);
+    //public List<Programa> findByNombre(String nombre);
 
-    public List<Programa> findByDescripcion(String descripcion);
+    //public List<Programa> findByDescripcion(String descripcion);
 }
