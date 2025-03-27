@@ -15,8 +15,9 @@ public class Docente extends Persona{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long codigoDocente;
 
-    @ManyToOne
+    @OneToMany
     private Departamento codigoDepartamento;
+
 
     private String titulo;
     private String especializacion;

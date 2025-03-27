@@ -2,11 +2,10 @@ package sistemaAcademico.model;
 
 
 import jakarta.persistence.*;
-import lombok.*;
 
 public class CursoHistorial {
     @Id
-    private Long codigoCursoHistorial; // Clave primaria de tipo Long
+    private Long codigoCursoHistorial;
 
     @ManyToOne
     @JoinColumn(name = "codigo_historial_academico")

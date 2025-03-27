@@ -1,14 +1,11 @@
 package sistemaAcademico.model;
 
-
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.util.List;
 
-import jakarta.persistence.GeneratedValue;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -23,6 +20,7 @@ public class Calificacion {
     private float nota;
     @OneToMany
     private List<Estudiante> codigoEstudiante;
+    @OneToMany
     private Evaluacion codigoEvaluacion;
 }
 
