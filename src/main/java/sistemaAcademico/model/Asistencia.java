@@ -14,15 +14,30 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 
+/*
+La anotacion @JoinTable se utiliza para crear y personalizar una tabla intermedia
+en una relacion de muchos a muchos entre dos entidades.
+
+ */
+
 public class Asistencia {
 
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long codigoAsistencia;
+
     @OneToMany
+    @JoinTable(
+            name = "asistencia_estudiante", //Nombre de la tabla intermedia
+            joinColumns = @JoinColumn(name = "codigo_asistencia"), // Clave foranea hacia asistencia
+            inverseJoinColumns = @JoinColumn(name = "codigo_estudiante") // Clave foranea hacia estudiante
+    )
     private List<Estudiante> codigoEstudiante;
-    @ManyToOne
+
+    @ManyToOne (optional = false)
+    @JoinColumn(name = "codigo_curso",nullable = false )
     private Curso codigoCurso;
+
     private Date fechaAsistencia;
     private boolean asistencia;
 

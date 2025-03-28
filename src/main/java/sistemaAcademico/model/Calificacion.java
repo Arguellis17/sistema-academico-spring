@@ -18,9 +18,12 @@ public class Calificacion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long codigoCalificacion;
     private float nota;
-    @OneToMany
-    private List<Estudiante> codigoEstudiante;
-    @OneToMany
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "codigo_estudiante",nullable = false)
+    private Estudiante codigoEstudiante;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "codigo_evaluacion",nullable = false)
     private Evaluacion codigoEvaluacion;
 }
 
