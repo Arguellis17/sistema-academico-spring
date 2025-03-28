@@ -2,12 +2,15 @@ package sistemaAcademico.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+
 import java.util.List;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode(callSuper = false)
+
 
 public class Docente extends Persona{
 
@@ -15,13 +18,18 @@ public class Docente extends Persona{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long codigoDocente;
 
-    @OneToMany
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "codigoDepartamento",nullable = false)
     private Departamento codigoDepartamento;
 
 
     private String titulo;
     private String especializacion;
     private int cargaHoraria;
+
+    @OneToMany(mappedBy = "docente") // Relación manejada por el campo 'docente' en AsignacionDocente
+    private List<AsignacionDocente> asignaciones;
+
 
 
 }

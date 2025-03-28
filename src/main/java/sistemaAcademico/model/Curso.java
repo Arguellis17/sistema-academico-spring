@@ -32,4 +32,7 @@ public class Curso {
     private String contenido;
     private String objetivo;
     private String competencia;
+
+    @OneToMany(mappedBy = "curso")
+    private List<AsignacionDocente> asignaciones;
 }

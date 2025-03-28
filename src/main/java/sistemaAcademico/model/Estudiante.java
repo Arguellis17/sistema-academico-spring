@@ -1,6 +1,6 @@
 package sistemaAcademico.model;
 
-import sistemaAcademico.model.Carrera;
+import java.util.List;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -20,6 +20,7 @@ import lombok.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode(callSuper = false)
 public class Estudiante extends Persona{
 
     @Id
@@ -28,7 +29,12 @@ public class Estudiante extends Persona{
     // @ManyToOne: Indica que la relación es de muchos a uno
     @ManyToOne
     private Carrera codigoCarrera;
+
     private int semestre;
+
+    // mappedBy indica que esta entidad es la inversa de la relación
+    @OneToMany(mappedBy = "estudiante")
+    private List<Calificacion> calificaciones;
 
 
 }
