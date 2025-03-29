@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import java.util.List;
 
 
 @Entity
@@ -19,4 +20,8 @@ public class HistorialAcademico {
     private float promedioGeneral;
     @ManyToOne
     private Estudiante codigoEstudiante;
+
+    // Agregando la relación con CursoHistorial
+    @OneToMany(mappedBy = "historial_academico")
+    private List<CursoHistorial> cursoHistorial;
 }

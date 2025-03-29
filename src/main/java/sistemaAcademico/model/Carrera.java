@@ -28,4 +28,8 @@ public class Carrera {
     @ManyToOne(optional = false)
     @JoinColumn(name = "codigo_departamento", nullable = false)
     private Departamento codigoDepartamento;
+
+    // Agregando la relación con estudiante
+    @OneToMany(mappedBy = "codigoCarrera")
+    private List<Estudiante> estudiantes;
 }

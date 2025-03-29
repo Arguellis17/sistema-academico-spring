@@ -55,4 +55,8 @@ public class Curso {
     // Agregando la relación con AsignacionDocente
     @OneToMany(mappedBy = "curso")
     private List<AsignacionDocente> asignaciones;
+
+    // Agregando la relación con CursoHistorial
+    @OneToMany(mappedBy = "curso")
+    private List<CursoHistorial> cursoHistorial;
 }
