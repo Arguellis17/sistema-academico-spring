@@ -38,5 +38,12 @@ public class Estudiante extends Persona{
     @OneToMany(mappedBy = "estudiante")
     private List<Calificacion> calificaciones;
 
+    // Agregando la relacion con HistorialAcademico
+    @OneToMany(mappedBy = "codigo_estudiante")
+    private List<HistorialAcademico> historialAcademico;
+
+    // Agregando la relación con Matricula
+    @OneToOne(mappedBy = "estudiante")
+    private Matricula matricula;
 
 }

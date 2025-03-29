@@ -26,4 +26,8 @@ public class Usuario {
     // Agregando relacion con la clase Chat
     @OneToMany (mappedBy = "codigo_usuario")
     private List<Chat> chats;
+
+    // Agregando la relacion con la clase Foro
+    @ManyToMany (mappedBy = "codigoUsuario")
+    private List<Foro> foros;
 }

@@ -18,10 +18,14 @@ public class Evaluacion {
     private Long codigoEvaluacion;
     private String tipo;
     private float ponderacion;
+
     @OneToOne
+    @JoinColumn(name = "codigo_curso")
     private Curso codigoCurso;
+
     private Date fechaEvaluacion;
 
+    // Agregando la relacion con Calificacion
     @OneToMany(mappedBy = "evaluacion")
     private List<Calificacion> calificaciones;
 }

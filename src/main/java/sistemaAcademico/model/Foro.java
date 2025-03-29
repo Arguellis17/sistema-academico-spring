@@ -17,7 +17,9 @@ public class Foro {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long codigoForo;
+
     @ManyToOne
+    @JoinColumn(name = "codigo_curso")
     private Curso codigoCurso;
 
     private String titulo;
@@ -25,5 +27,10 @@ public class Foro {
     private Date fechaCreacion;
 
     @ManyToMany
+    @JoinTable(
+            name = "foro_usuario", //Nombre de la tabla intermedia
+            joinColumns = @JoinColumn(name = "codigo_foro"), // Clave foranea hacia foro
+            inverseJoinColumns = @JoinColumn(name = "codigo_usuario") // Clave foranea hacia usuario
+    )
     private List<Usuario> codigoUsuario;
 }

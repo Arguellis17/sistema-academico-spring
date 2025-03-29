@@ -59,4 +59,22 @@ public class Curso {
     // Agregando la relación con CursoHistorial
     @OneToMany(mappedBy = "curso")
     private List<CursoHistorial> cursoHistorial;
+
+    // Agregando la relacion con Evaluacion
+    @OneToOne(mappedBy = "codigo_curso")
+    private Evaluacion evaluacion;
+
+    // Agregando la relacion con Foro
+    @OneToMany(mappedBy = "codigoCurso")
+    private List<Foro> foros;
+
+    // Agregando la relacion con Horario
+    @OneToMany(mappedBy = "codigo_curso")
+    private List<Horario> horarios;
+
+    // Agregando la relacion con Matricula
+    @ManyToOne
+    private Matricula matricula;
+
 }
+

@@ -18,7 +18,9 @@ public class HistorialAcademico {
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long codigoHistorialAcademico;
     private float promedioGeneral;
-    @ManyToOne
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "codigo_estudiante", nullable = false)
     private Estudiante codigoEstudiante;
 
     // Agregando la relación con CursoHistorial
