@@ -26,15 +26,24 @@ public class Estudiante extends Persona{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long codigoEstudiante;
+
     // @ManyToOne: Indica que la relación es de muchos a uno
     @ManyToOne
+    @JoinColumn(name = "codigo_carrera")
     private Carrera codigoCarrera;
 
     private int semestre;
 
-    // mappedBy indica que esta entidad es la inversa de la relación
+    //  Agregando la relación con calificacion
     @OneToMany(mappedBy = "estudiante")
     private List<Calificacion> calificaciones;
 
+    // Agregando la relacion con HistorialAcademico
+    @OneToMany(mappedBy = "codigo_estudiante")
+    private List<HistorialAcademico> historialAcademico;
+
+    // Agregando la relación con Matricula
+    @OneToOne(mappedBy = "estudiante")
+    private Matricula matricula;
 
 }

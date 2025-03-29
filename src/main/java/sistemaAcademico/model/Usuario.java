@@ -2,6 +2,7 @@ package sistemaAcademico.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -21,4 +22,12 @@ public class Usuario {
     private Rol rol;
 
     private boolean sesionActiva;
+
+    // Agregando relacion con la clase Chat
+    @OneToMany (mappedBy = "codigo_usuario")
+    private List<Chat> chats;
+
+    // Agregando la relacion con la clase Foro
+    @ManyToMany (mappedBy = "codigoUsuario")
+    private List<Foro> foros;
 }
