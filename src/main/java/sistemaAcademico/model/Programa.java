@@ -5,6 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.*;
 import lombok.*;
+import java.util.List;
 
 @Data
 @Entity
@@ -19,6 +20,10 @@ public class Programa {
     private String nombre;
     private String descripcion;
     @OneToMany
-    private Carrera codigoCarrera;
+    private List<Carrera> codigoCarrera;
+
+    // Agregando la relación con Curso
+    @ManyToMany(mappedBy = "codigo_programa")
+    private List<Curso> cursos;
 
 }

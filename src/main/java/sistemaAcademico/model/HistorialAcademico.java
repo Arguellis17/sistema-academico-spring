@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import java.util.List;
 
 
 @Entity
@@ -17,6 +18,12 @@ public class HistorialAcademico {
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long codigoHistorialAcademico;
     private float promedioGeneral;
-    @ManyToOne
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "codigo_estudiante", nullable = false)
     private Estudiante codigoEstudiante;
+
+    // Agregando la relación con CursoHistorial
+    @OneToMany(mappedBy = "historial_academico")
+    private List<CursoHistorial> cursoHistorial;
 }

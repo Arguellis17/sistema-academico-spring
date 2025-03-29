@@ -22,6 +22,7 @@ public class Calificacion {
     @ManyToOne(optional = false)
     @JoinColumn(name = "codigo_estudiante",nullable = false)
     private Estudiante codigoEstudiante;
+
     @ManyToOne(optional = false)
     @JoinColumn(name = "codigo_evaluacion",nullable = false)
     private Evaluacion codigoEvaluacion;

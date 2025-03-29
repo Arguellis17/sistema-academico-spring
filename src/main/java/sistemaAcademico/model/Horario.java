@@ -16,8 +16,11 @@ public class Horario {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long codigoHorario;
+
     @ManyToOne
+    @JoinColumn(name = "codigo_curso")
     private Curso codigoCurso;
+
     private Date horaInicio;
     private Date horaFin;
     private String tipoSesion;
