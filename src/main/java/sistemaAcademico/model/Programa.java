@@ -19,7 +19,7 @@ public class Programa {
     private Long codigoPrograma;
     private String nombre;
     private String descripcion;
-    @OneToMany
+    @OneToMany(mappedBy = "codigoPrograma")
     private List<Carrera> codigoCarrera;
 
     // Agregando la relación con Curso

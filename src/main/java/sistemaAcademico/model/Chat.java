@@ -4,6 +4,8 @@ package sistemaAcademico.model;
 import jakarta.persistence.*;
 import lombok.*;
 import java.util.Date;
+import java.util.List;
+
 
 @Entity
 @Data
@@ -24,4 +26,8 @@ public class Chat {
     @ManyToOne(optional = false)
     @JoinColumn(name = "codigo_usuario2",nullable = false)
     private Usuario codigoUsuario2;
+
+    // Relación con los mensajes del chat
+    @OneToMany(mappedBy = "chat")
+    private List<Mensaje> mensajes;
 }

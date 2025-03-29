@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.util.List;
 
+
 import java.util.Date;
 
 @Data
@@ -21,7 +22,8 @@ public class Semestre {
     private Date fechaInicio;
     private Date fechaFin;
 
-    // Agregando relacion con Curso
-    @OneToOne(mappedBy = "codigoSemestre")
-    private Curso cursos;
+    // Un semestre puede tener varios cursos, por lo que la relación debe ser @OneToMany
+    // Cambio de @OneToOne a @OneToMany para permitir múltiples cursos en un semestre
+    @OneToMany(mappedBy = "codigoSemestre")
+    private List<Curso> codigoCurso;
 }

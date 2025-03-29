@@ -16,11 +16,11 @@ public class PrestamoRecurso {
     private Date fechaPrestamo;
     private Date fechaDevolucion;
 
-    @ManyToOne
-    @JoinColumn(name = "codigo_recurso")
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "codigo_recurso", nullable = false)
     private RecursoAcademico recurso;
 
-    @ManyToOne
-    @JoinColumn(name = "codigo_usuario")
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "codigo_usuario", nullable = false)
     private Usuario usuario;
 }

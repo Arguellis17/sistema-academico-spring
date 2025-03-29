@@ -19,11 +19,13 @@ public class Notificacion {
     private String tipo;
     private String estado = "No Leída";
 
+    // Relación con el usuario que envía la notificación
     @ManyToOne
-    @JoinColumn(name = "codigo_usuario")
+    @JoinColumn(name = "codigo_usuario", nullable = false)
     private Usuario usuario;
 
+    // Relación con el usuario que recibe la notificación
     @ManyToOne
-    @JoinColumn(name = "codigo_destinatario")
+    @JoinColumn(name = "codigo_destinatario", nullable = false)
     private Usuario destinatario;
 }

@@ -43,8 +43,8 @@ public class Curso {
     )
     private List<Programa> codigoPrograma;
 
-    @OneToOne
-    @JoinColumn(name = "codigo_semestre")
+    @ManyToOne
+    @JoinColumn(name = "codigo_semestre", nullable = false)
     private Semestre codigoSemestre;
 
     private String tipoCurso;

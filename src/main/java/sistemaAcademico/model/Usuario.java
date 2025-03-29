@@ -23,11 +23,29 @@ public class Usuario {
 
     private boolean sesionActiva;
 
-    // Agregando relacion con la clase Chat
-    @OneToMany (mappedBy = "codigo_usuario")
-    private List<Chat> chats;
+    // Relación con los chats donde el usuario es "codigoUsuario1"
+    @OneToMany(mappedBy = "codigoUsuario1")
+    private List<Chat> chatsComoUsuario1;
+
+    // Relación con los chats donde el usuario es "codigoUsuario2"
+    @OneToMany(mappedBy = "codigoUsuario2")
+    private List<Chat> chatsComoUsuario2;
+
+    // Relación con los mensajes enviados
+    @OneToMany(mappedBy = "emisor")
+    private List<Mensaje> mensajesEnviados;
+
+    // Relación con los mensajes recibidos
+    @OneToMany(mappedBy = "receptor")
+    private List<Mensaje> mensajesRecibidos;
 
     // Agregando la relacion con la clase Foro
     @ManyToMany (mappedBy = "codigoUsuario")
     private List<Foro> foros;
+
+    @OneToMany(mappedBy = "usuario")
+    private List<Notificacion> notificacionesEnviadas;
+
+    @OneToMany(mappedBy = "destinatario")
+    private List<Notificacion> notificacionesRecibidas;
 }

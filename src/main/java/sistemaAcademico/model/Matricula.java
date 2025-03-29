@@ -19,8 +19,9 @@ public class Matricula {
     private Long codigoMatricula;
     private Date fechaMatricula;
 
-    @OneToMany
-    @JoinColumn (name = "codigo_curso")
+    @ManyToMany
+    @JoinTable(name = "matricula_curso", joinColumns = @JoinColumn(name = "codigo_matricula"),
+            inverseJoinColumns = @JoinColumn(name = "codigo_curso"))
     private List<Curso> codigoCurso;
 
     @OneToOne
