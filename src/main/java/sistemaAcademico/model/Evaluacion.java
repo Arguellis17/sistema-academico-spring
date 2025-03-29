@@ -3,6 +3,7 @@ package sistemaAcademico.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
 import java.util.Date;
 
 @Data
@@ -20,4 +21,7 @@ public class Evaluacion {
     @OneToOne
     private Curso codigoCurso;
     private Date fechaEvaluacion;
+
+    @OneToMany(mappedBy = "evaluacion")
+    private List<Calificacion> calificaciones;
 }

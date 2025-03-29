@@ -32,7 +32,7 @@ public class Estudiante extends Persona{
 
     private int semestre;
 
-    // mappedBy indica que esta entidad es la inversa de la relación
+    //  Agregando la relación con calificacion
     @OneToMany(mappedBy = "estudiante")
     private List<Calificacion> calificaciones;
 

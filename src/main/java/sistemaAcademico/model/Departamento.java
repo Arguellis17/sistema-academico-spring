@@ -25,4 +25,8 @@ public class Departamento {
 
     @OneToMany
     private List<Docente> docentes;
+
+    // Agregamos relacion con carrera
+    @OneToMany(mappedBy = "codigoDepartamento")
+    private List<Carrera> carreras;
 }

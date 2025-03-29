@@ -20,14 +20,12 @@ public class Carrera {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long codigoCarrera;
 
-    // Preguntarle al profesor si eso se pone XDDDDDDD
-    
-    // Indica que la relación es de uno a muchos
-    //@OneToMany(mappedBy = "codigoCarrera")
-    // Lista de estudiantes
-    //private List<Estudiante> estudiantes;
 
     private String nombreCarrera;
     private int duracion;
-    //private Departamento codigoDepartamento;
+
+    // Indicamos que una carrera no puede existir sin estar asociada a un departamento
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "codigo_departamento", nullable = false)
+    private Departamento codigoDepartamento;
 }
