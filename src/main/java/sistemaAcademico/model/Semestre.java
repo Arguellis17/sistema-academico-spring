@@ -1,12 +1,11 @@
 package sistemaAcademico.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import java.util.List;
+
 
 import java.util.Date;
 
@@ -22,4 +21,9 @@ public class Semestre {
     private int numeroSemestre;
     private Date fechaInicio;
     private Date fechaFin;
+
+    // Un semestre puede tener varios cursos, por lo que la relación debe ser @OneToMany
+    // Cambio de @OneToOne a @OneToMany para permitir múltiples cursos en un semestre
+    @OneToMany(mappedBy = "codigoSemestre")
+    private List<Curso> codigoCurso;
 }

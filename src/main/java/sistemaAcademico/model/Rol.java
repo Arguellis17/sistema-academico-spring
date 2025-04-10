@@ -15,4 +15,7 @@ public class Rol {
 
     private String nombre;
     private String tipoRol;
+
+    @OneToMany(mappedBy = "rol")
+    private List<Usuario> usuarios;
 }
