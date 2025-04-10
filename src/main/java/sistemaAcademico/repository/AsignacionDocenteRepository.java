@@ -13,5 +13,8 @@ public interface AsignacionDocenteRepository extends JpaRepository<AsignacionDoc
 
     //public List<AsignacionDocente> findByCargaHoraria(int cargaHoraria);
 
+    List<AsignacionDocente> findByFecha(Date fecha);
+
+    List<AsignacionDocente> findByCargaHoraria(int cargaHoraria);
 
 }
