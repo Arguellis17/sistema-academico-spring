@@ -45,6 +45,6 @@ public class AsistenciaController {
 
     @GetMapping("/estado")
     public List<Asistencia> getByEstado(@RequestParam("asistencia") boolean asistencia) {
-        return asistenciaService.findByAsistencia(asistencia);
+        return asistenciaService.findByAsistencia( asistencia);
     }
 }

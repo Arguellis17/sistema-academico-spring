@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 @Service
-public interface AsignacionDoncenteService extends CrudService<AsignacionDocente,Long>{
+public interface AsignacionDocenteService extends CrudService<AsignacionDocente,Long>{
     //public List<AsignacionDocente> findByFecha(Date fecha);
 
     //public List<AsignacionDocente> findByCargaHoraria(int cargaHoraria);

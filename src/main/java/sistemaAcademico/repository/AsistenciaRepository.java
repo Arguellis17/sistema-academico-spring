@@ -12,8 +12,8 @@ public interface AsistenciaRepository extends JpaRepository<Asistencia, Long> {
 
     //public List<Asistencia> findByFechaAsistencia(Date fechaAsistencia);
     //public List<Asistencia> findByAsistencia(boolean asistencia);
-    List<Asistencia> findByFechaAsistencia(Date fechaAsistencia);
 
+    List<Asistencia> findByFechaAsistencia(Date fechaAsistencia);
     List<Asistencia> findByAsistencia(boolean asistencia);
 
 }

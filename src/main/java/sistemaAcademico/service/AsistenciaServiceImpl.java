@@ -45,6 +45,7 @@ public class AsistenciaServiceImpl implements AsistenciaService{
 
     }
 
+    // Métodos personalizados
     @Override
     public List<Asistencia> findByFechaAsistencia(Date fechaAsistencia) {
         return asistenciaRepository.findByFechaAsistencia(fechaAsistencia);
