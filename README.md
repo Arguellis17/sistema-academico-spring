@@ -1,6 +1,8 @@
 # 📚 Sistema Académico - Spring Boot
 
-Este es un sistema académico desarrollado con Java y Spring Boot. Es parte de la tercera nota de Programación Web
+Este proyecto es un sistema académico desarrollado con Java y Spring Boot como parte de la evaluación del tercer corte de la asignatura **Programación Web**. 
+El propósito de este sistema es simular la gestión académica de una institución educativa, permitiendo la administración de estudiantes, docentes, cursos, evaluaciones, comunicaciones y más. Está diseñado aplicando buenas prácticas de arquitectura por capas y principios de diseño limpio.
+Este trabajo ha sido realizado bajo la guía del profesor **Jonathan Rolando**, por un equipo de cuatro estudiantes comprometidos con el aprendizaje y la implementación de tecnologías modernas del ecosistema Java Spring.
 
 ## 🚀 Características principales
 
@@ -80,7 +82,7 @@ Esta separación permite seguir el principio de inversión de dependencias y fac
 
 Este proyecto usa Maven como sistema de construcción. A continuación, un resumen de las dependencias más importantes configuradas en el archivo pom.xml
 
-## 🧰 Dependencias Principales
+🧰 Dependencias Principales
 
 - Spring Boot Starter Web: para construir APIs REST.
 
@@ -95,6 +97,12 @@ Este proyecto usa Maven como sistema de construcción. A continuación, un resum
 - PostgreSQL Driver: conector a base de datos PostgreSQL.
 
 ## Contribuidores
-### Juan Arguello
-juandavidaa@ufps.edu.co
+
+| Nombre              | Correo                               | GitHub                                      |
+|---------------------|--------------------------------------|---------------------------------------------|
+| Juan Arguello       | juandavidaa@ufps.edu.co              | [Arguellis17](https://github.com/Arguellis17) |
+| Jonathan Guevara    | jonathangc@ufps.edu.co               | [JonathanGuevaraC](https://github.com/JonathanGuevaraC) |
+| Jesus Chinchilla    | jesusdavidcm@ufps.edu.co             | [JesusDavidChinchillaMachuca](https://github.com/JesusDavidChinchillaMachuca) |
+| Sebastian Lopez     | johansebastianlo@ufps.edu.co         | [SebsMusicLive](https://github.com/SebsMusicLive) |
+
 
