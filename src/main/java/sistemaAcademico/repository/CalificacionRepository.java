@@ -10,5 +10,6 @@ import java.util.List;
 public interface CalificacionRepository extends JpaRepository<Calificacion, Long> {
 
     //public List<Calificacion> findByNota(float nota);
+    List<Calificacion> findByNota(float nota);
 
 }

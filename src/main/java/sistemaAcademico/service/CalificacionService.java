@@ -1,11 +1,10 @@
 package sistemaAcademico.service;
 
-import org.springframework.stereotype.Service;
 import sistemaAcademico.model.Calificacion;
+import java.util.List;
 
-@Service
 public interface CalificacionService extends CrudService<Calificacion, Long> {
 
     //public List<Calificacion> findByNota(float nota);
-
+    List<Calificacion> findByNota(float nota);
 }
