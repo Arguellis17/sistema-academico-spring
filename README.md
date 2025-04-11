@@ -105,4 +105,14 @@ Este proyecto usa Maven como sistema de construcción. A continuación, un resum
 | Jesus Chinchilla    | jesusdavidcm@ufps.edu.co             | [JesusDavidChinchillaMachuca](https://github.com/JesusDavidChinchillaMachuca) |
 | Sebastian Lopez     | johansebastianlo@ufps.edu.co         | [SebsMusicLive](https://github.com/SebsMusicLive) |
 
+## 🚀 Clonar el proyecto
+
+Puedes clonar este repositorio usando el siguiente comando:
+
+```bash
+git clone https://github.com/Arguellis17/sistema-academico-spring.git
+```
+
+## 📄 Licencia
+Este proyecto está bajo la licencia MIT. 
 
