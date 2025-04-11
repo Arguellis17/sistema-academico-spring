@@ -61,4 +61,10 @@ public class CalificacionController {
     public List<Calificacion> findByNota(@PathVariable float nota) {
         return calificacionService.findByNota(nota);
     }
+
+    // Buscar por estudiante ID
+    @GetMapping("/estudiante/{estudianteId}")
+    public List<Calificacion> findByEstudianteId(@PathVariable Long estudianteId) {
+        return calificacionService.findByEstudianteId(estudianteId);
+    }
 }

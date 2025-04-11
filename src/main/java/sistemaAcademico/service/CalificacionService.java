@@ -5,6 +5,6 @@ import java.util.List;
 
 public interface CalificacionService extends CrudService<Calificacion, Long> {
 
-    //public List<Calificacion> findByNota(float nota);
+    List<Calificacion> findByEstudianteId(Long estudianteId);
     List<Calificacion> findByNota(float nota);
 }

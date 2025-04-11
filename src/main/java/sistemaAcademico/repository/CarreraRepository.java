@@ -9,7 +9,9 @@ import java.util.List;
 @Repository
 public interface CarreraRepository extends JpaRepository<Carrera, Long> {
 
-    //public List<Carrera> findByNombreCarrera(String nombreCarrera);
+    public List<Carrera> findByNombreCarrera(String nombreCarrera);
 
-    //public List<Carrera> findByDuracion(int duracion);
+    public List<Carrera> findByDuracion(int duracion);
+
+
 }

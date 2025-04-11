@@ -13,6 +13,8 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class AsistenciaServiceImpl implements AsistenciaService{
+
+    // Inyección de dependencias
     private final AsistenciaRepository asistenciaRepository;
 
     @Override

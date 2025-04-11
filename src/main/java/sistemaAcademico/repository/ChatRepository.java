@@ -10,5 +10,5 @@ import java.util.List;
 @Repository
 public interface ChatRepository extends JpaRepository<Chat, Long> {
 
-    //public List<Chat> findByFechaCreacion(Date fechaCreacion);
+    public List<Chat> findByFechaCreacion(Date fechaCreacion);
 }
