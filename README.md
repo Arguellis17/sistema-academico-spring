@@ -2,7 +2,7 @@
 
 Este proyecto es un sistema académico desarrollado con Java y Spring Boot como parte de la evaluación del tercer corte de la asignatura **Programación Web**. 
 El propósito de este sistema es simular la gestión académica de una institución educativa, permitiendo la administración de estudiantes, docentes, cursos, evaluaciones, comunicaciones y más. Está diseñado aplicando buenas prácticas de arquitectura por capas y principios de diseño limpio.
-Este trabajo ha sido realizado bajo la guía del profesor **Jonathan Rolando**, por un equipo de cuatro estudiantes comprometidos con el aprendizaje y la implementación de tecnologías modernas del ecosistema Java Spring.
+Este trabajo ha sido realizado bajo la guía del profesor **Jonathan Rolando**.
 
 ## 🚀 Características principales
 
