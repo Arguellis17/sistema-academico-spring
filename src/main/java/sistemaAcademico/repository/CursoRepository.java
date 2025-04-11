@@ -15,7 +15,5 @@ public interface CursoRepository extends JpaRepository<Curso, Long> {
     List<Curso> findByCodigoSemestre_Id(Long codigoSemestre);
 
     // Buscar cursos por docente
-    //List<Curso> findByCodigoDocente_Id(Long codigoDocente);
-
     List<Curso> findByCodigoDocente_CodigoDocente(Long codigoDocente);
 }

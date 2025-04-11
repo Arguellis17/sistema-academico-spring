@@ -2,24 +2,36 @@ package sistemaAcademico.service;
 
 import org.springframework.stereotype.Service;
 import sistemaAcademico.model.Curso;
+import sistemaAcademico.model.Estudiante;
+import sistemaAcademico.model.Horario;
 
 import java.util.List;
 
 @Service
 public interface CursoService extends CrudService<Curso, Long>{
-    /*// Buscar cursos por carrera
-    List<Curso> findByCodigoCarrera_Id(Long codigoCarrera);
 
-    // Buscar cursos por semestre
-    List<Curso> findByCodigoSemestre_Id(Long codigoSemestre);
+    List<Curso> findByCodigoSemestreId(Long codigoSemestre);
 
-    // Buscar cursos por docente
-    List<Curso> findByCodigoDocente_Id(Long codigoDocente);*/
-    List<Curso> findByCodigoCarrera_Id(Long codigoCarrera);
+    List<Curso> findByCodigoDocenteId(Long codigoDocente);
 
-    List<Curso> findByCodigoSemestre_Id(Long codigoSemestre);
+    void inscribirEstudiante(Long codigoEstudiante, Estudiante estudiante);
 
-    List<Curso> findByCodigoDocente_CodigoDocente(Long codigoDocente);
+    void agregarPrerrequisito(Curso prerrequisito);
+
+    boolean validarPrerrequisitos(Long codigoEstudiante);
+
+    void agregarCurso();
+
+    void eliminarCurso();
+
+    boolean validarCupos();
+
+    Horario generarHorario();
+
+    boolean verificarDisponibilidad();
+
+
+
 
 }
 
