@@ -28,6 +28,6 @@ public class Chat {
     private Usuario codigoUsuario2;
 
     // Relación con los mensajes del chat
-    @OneToMany(mappedBy = "chat")
+    @OneToMany(mappedBy = "chat", cascade = CascadeType.ALL)
     private List<Mensaje> mensajes;
 }
