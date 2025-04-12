@@ -9,7 +9,8 @@ import java.util.List;
 @Repository
 public interface CalificacionRepository extends JpaRepository<Calificacion, Long> {
 
-    //public List<Calificacion> findByNota(float nota);
+
+    List<Calificacion> findByEstudianteId(Long estudianteId);
     List<Calificacion> findByNota(float nota);
 
 }

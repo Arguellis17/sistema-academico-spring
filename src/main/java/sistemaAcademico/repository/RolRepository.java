@@ -12,4 +12,8 @@ public interface RolRepository extends JpaRepository<Rol, Long> {
     //public List<Rol> findByNombre(String nombre);
 
     //public List<Rol> findByTipoRol(String tipoRol);
+
+    List<Rol> findByNombre(String nombre);
+
+    List<Rol> findByTipoRol(String tipoRol);
 }

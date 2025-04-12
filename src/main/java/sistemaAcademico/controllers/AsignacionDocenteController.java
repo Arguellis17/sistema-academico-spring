@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import sistemaAcademico.model.AsignacionDocente;
-import sistemaAcademico.service.AsignacionDocenteService;
 
 import java.util.Date;
 import java.util.List;
@@ -16,7 +15,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class AsignacionDocenteController {
 
-    @Qualifier("asignacionDocenteServiceImpl")
+    @Qualifier("asignacionDocenteService")
     private final AsignacionDocenteService service;
 
     @GetMapping

@@ -13,4 +13,5 @@ public interface CrudService <T, ID>{
     Optional<T> findById(ID id) throws Exception;
     void deleteById(ID id) throws Exception;
     void deleteAll() throws Exception;
+
 }

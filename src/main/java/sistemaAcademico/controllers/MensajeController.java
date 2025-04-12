@@ -75,4 +75,15 @@ public class MensajeController {
         return mensajeService.findByFechaEnvio(fechaEnvio);
     }
     */
+
+    @GetMapping("/buscar/contenido")
+    public List<Mensaje> buscarPorContenido(@RequestParam String contenido) throws Exception {
+        return mensajeService.findByContenido(contenido);
+    }
+
+    @GetMapping("/buscar/chat")
+    public List<Mensaje> buscarPorChat(@RequestParam Long idChat) throws Exception {
+        return mensajeService.findByChatId(idChat);
+    }
+
 }

@@ -9,5 +9,5 @@ import java.util.List;
 @Repository
 public interface CursoHistorialRepository extends JpaRepository<CursoHistorial, Long> {
 
-    //public List<CursoHistorial> findByCalificacionFinal(float calificacionFinal);
+    public List<CursoHistorial> findByCalificacionFinal(float calificacionFinal);
 }

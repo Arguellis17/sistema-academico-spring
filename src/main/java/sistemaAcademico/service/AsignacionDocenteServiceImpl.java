@@ -1,18 +1,16 @@
 package sistemaAcademico.service;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
+import org.jvnet.hk2.annotations.Service;
 import sistemaAcademico.model.AsignacionDocente;
 import sistemaAcademico.repository.AsignacionDocenteRepository;
-import sistemaAcademico.service.AsignacionDocenteService;
-
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class AsignacionDocenteServiceImpl implements AsignacionDocenteService{
+public class AsignacionDocenteServiceImpl implements AsignacionDocenteService {
 
     private final AsignacionDocenteRepository repository;
 
@@ -56,3 +54,4 @@ public class AsignacionDocenteServiceImpl implements AsignacionDocenteService{
         return repository.findByCargaHoraria(cargaHoraria);
     }
 }
+
