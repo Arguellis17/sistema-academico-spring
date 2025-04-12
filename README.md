@@ -120,3 +120,6 @@ git clone https://github.com/Arguellis17/sistema-academico-spring.git
 ## 📄 Licencia
 Este proyecto está bajo la licencia MIT. 
 
+## Cronograma de Actividades
+https://docs.google.com/spreadsheets/d/1Na84YfwvMOs03YQNCtL16cIsvZBUrKN0/edit?gid=504086334#gid=504086334
+
