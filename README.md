@@ -13,28 +13,32 @@ Este trabajo ha sido realizado bajo la guía del profesor **Jonathan Rolando**.
 
 ---
 
-## 🧩 Módulos Funcionales
+🧩 Módulos Funcionales
 
-### 1. Módulo de Gestión de Estudiantes
-- **Registro y Actualización:** Alta, modificación y eliminación de la información personal y académica de cada estudiante.
-- **Matrícula e Inscripción:** Gestión de inscripción a cursos, con validación de requisitos y prerrequisitos.
-- **Historial Académico:** Visualización del rendimiento académico, cursos aprobados y calificaciones.
-- **Gestión de Asistencia:** Registro de asistencia e inasistencia, incluyendo justificaciones.
+### 1. Módulo de Gestión de Estudiantes (Responsable: **Sebas**)
 
-### 2. Módulo de Gestión de Docentes
-- **Registro y Actualización:** Administración del perfil profesional y académico de los docentes.
-- **Asignación de Cursos:** Asignación de materias considerando disponibilidad y carga horaria.
-- **Gestión de Evaluaciones:** Creación y registro de exámenes, pruebas y otras formas de evaluación.
+- **Registro y Actualización**: Permitir el alta, modificación y eliminación de la información personal y académica de cada estudiante.
+- **Matrícula e Inscripción**: Gestionar el proceso de matrícula, inscripción a cursos y asignaturas, considerando requisitos y prerrequisitos.
+- **Gestión de Asistencia**: Registrar la asistencia a clases y generar reportes de inasistencias o ausencias justificadas.
+- **Historial Académico**: Visualización del rendimiento académico, cursos aprobados y calificaciones.
 
-### 3. Módulo de Gestión de Cursos y Asignaturas
-- **Creación y Administración:** Diseño y actualización de cursos, contenidos y competencias.
-- **Programación de Horarios:** Gestión de horarios académicos sin solapamientos.
-- **Inscripción y Cancelación:** Inscripción/cancelación por parte de los estudiantes, con control de cupos y requisitos.
+### 2. Módulo de Gestión de Docentes (Responsable: **Chinchilla**)
 
-### 4. Módulo de Evaluación y Calificaciones
-- **Registro de Calificaciones:** Ingreso y modificación de notas por evaluación.
-- **Cálculo de Promedios:** Automatización del promedio final y estadísticas de rendimiento.
-- **Retroalimentación:** Comunicación de resultados entre docentes y estudiantes.
+- **Registro y Actualización**: Permitir el alta, modificación y eliminación de datos personales y profesionales de los docentes.
+- **Asignación de Cursos**: Asignar cursos o asignaturas a cada docente, considerando disponibilidad y carga horaria.
+- **Gestión de Evaluaciones**: Facilitar la creación, aplicación y registro de evaluaciones, exámenes y otros instrumentos de medición del rendimiento estudiantil.
+
+### 3. Módulo de Gestión de Cursos y Asignaturas (Responsable: **Arguello**)
+
+- **Creación y Administración**: Permitir el diseño, modificación y eliminación de cursos y asignaturas, definiendo contenidos, objetivos y competencias a desarrollar.
+- **Programación de Horarios**: Establecer y gestionar los horarios de clases, exámenes y tutorías, evitando solapamientos y optimizando el uso de recursos.
+- **Inscripción y Cancelación**: Permitir a los estudiantes inscribirse o cancelar la inscripción en cursos, con validación de cupos y cumplimiento de prerrequisitos.
+
+### 4. Módulo de Evaluación y Calificaciones (Responsable: **Jonathan**)
+
+- **Registro de Calificaciones**: Permitir el ingreso, modificación y consulta de calificaciones de evaluaciones, exámenes y trabajos.
+- **Cálculo de Promedios y Estadísticas**: Automatizar el cálculo de promedios, proyecciones de rendimiento y generación de reportes de desempeño.
+- **Retroalimentación**: Facilitar la comunicación de resultados y comentarios entre docentes y estudiantes.
 
 ---
 
