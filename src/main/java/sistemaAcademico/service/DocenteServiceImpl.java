@@ -17,7 +17,7 @@ public class DocenteServiceImpl implements DocenteService {
     private final CursoRepository cursoRepository;
     private final EvaluacionRepository evaluacionRepository;
     private final EstudianteRepository estudianteRepository;
-    private final NotaRepository notaRepository;
+    private final CalificacionRepository calificacionRepository;
 
     @Override
     public List<Docente> findAll() throws Exception {
@@ -64,9 +64,6 @@ public class DocenteServiceImpl implements DocenteService {
         return docenteRepository.findByTelefono(telefono);
     }
 
-    // ----------------------------------------------------------
-    // MÉTODOS DE LÓGICA DE NEGOCIO
-    // ----------------------------------------------------------
 
     public void asignarCurso(Long idDocente, Curso curso) {
         Docente docente = docenteRepository.findById(idDocente)
@@ -103,12 +100,12 @@ public class DocenteServiceImpl implements DocenteService {
             throw new IllegalArgumentException("El docente no está asignado al curso de esta evaluación");
         }
 
-        Nota nuevaNota = new Nota();
-        nuevaNota.setEstudiante(estudiante);
-        nuevaNota.setEvaluacion(evaluacion);
-        nuevaNota.setNota(nota);
+        Calificacion nuevaCalificacion = new Calificacion();
+        nuevaCalificacion.setCodigoEstudiante(estudiante);
+        nuevaCalificacion.setCodigoEvaluacion(evaluacion);
+        nuevaCalificacion.setNota(nota);
 
-        notaRepository.save(nuevaNota);
+        calificacionRepository.save(nuevaCalificacion);
     }
 
     public boolean validarDisponibilidad(Docente docente) {

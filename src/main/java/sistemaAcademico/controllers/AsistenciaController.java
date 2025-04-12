@@ -47,4 +47,6 @@ public class AsistenciaController {
     public List<Asistencia> getByEstado(@RequestParam("asistencia") boolean asistencia) {
         return asistenciaService.findByAsistencia( asistencia);
     }
+
+
 }

@@ -26,4 +26,5 @@ public class HistorialAcademico {
     // Agregando la relación con CursoHistorial
     @OneToMany(mappedBy = "historial_academico")
     private List<CursoHistorial> cursoHistorial;
+
 }

@@ -1,8 +1,13 @@
 package sistemaAcademico.model;
 
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 /*
   Explicacion de etiquetas
@@ -35,15 +40,18 @@ public class Estudiante extends Persona{
     private int semestre;
 
     //  Agregando la relación con calificacion
-    @OneToMany(mappedBy = "estudiante")
+    @OneToMany(mappedBy = "estudiante", fetch = FetchType.LAZY)
+    @JsonManagedReference
     private List<Calificacion> calificaciones;
 
     // Agregando la relacion con HistorialAcademico
     @OneToMany(mappedBy = "codigo_estudiante")
+    @JsonManagedReference
     private List<HistorialAcademico> historialAcademico;
 
     // Agregando la relación con Matricula
-    @OneToOne(mappedBy = "estudiante")
+    @OneToOne(mappedBy = "estudiante", fetch = FetchType.LAZY)
+    @JsonManagedReference
     private Matricula matricula;
 
 }

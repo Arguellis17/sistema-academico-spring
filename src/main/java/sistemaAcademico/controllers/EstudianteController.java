@@ -1,5 +1,6 @@
 package sistemaAcademico.controllers;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import sistemaAcademico.model.Estudiante;
@@ -35,7 +36,7 @@ public class EstudianteController {
      * Crea un nuevo estudiante
      */
     @PostMapping
-    public Estudiante createEstudiante(@RequestBody Estudiante estudiante) throws Exception {
+    public Estudiante createEstudiante(@Valid @RequestBody Estudiante estudiante) throws Exception {
         return estudianteService.save(estudiante);
     }
 
