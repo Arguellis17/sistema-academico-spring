@@ -79,9 +79,8 @@ public class Curso {
     @OneToMany(mappedBy = "codigo_curso")
     private List<Horario> horarios;
 
-    // Agregando la relacion con Matricula
-    @ManyToOne
-    private Matricula matricula;
+    private List<Curso> prerequisito;
+
 
 }
 

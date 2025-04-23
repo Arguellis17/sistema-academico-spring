@@ -17,6 +17,8 @@ public class Mensaje {
     private String contenido;
     private Date fechaEnvio;
 
+    private boolean leido; // Nuevo campo: estado del mensaje
+
     @ManyToOne
     @JoinColumn(name = "codigo_chat")
     private Chat chat;

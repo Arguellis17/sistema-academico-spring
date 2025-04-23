@@ -15,7 +15,7 @@ import java.util.Optional;
 public class CalificacionController {
     private final CalificacionService calificacionService;
 
-    // Obtener todas las calificaciones
+    // Obtener todas las ca lificaciones
     @GetMapping
     public List<Calificacion> getAll() throws Exception {
         return calificacionService.findAll();
