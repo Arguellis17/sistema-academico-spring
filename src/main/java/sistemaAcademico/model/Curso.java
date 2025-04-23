@@ -18,6 +18,13 @@ public class Curso {
     private int creditos;
     private int horasTeoricas;
     private int horasPracticas;
+    @ManyToMany
+    @JoinTable(
+            name = "curso_estudiante",
+            joinColumns = @JoinColumn(name = "codigo_curso"),
+            inverseJoinColumns = @JoinColumn(name = "codigo_estudiante")
+    )
+    private List<Estudiante> estudiantes;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "codigo_docente", nullable = false)
