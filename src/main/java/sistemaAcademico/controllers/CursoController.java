@@ -66,24 +66,26 @@ public class CursoController {
     /**
      * Búsqueda por carrera
      */
-    @GetMapping("/buscar/carrera")
-    public List<Curso> getCursosByCarrera(@RequestParam Long codigoCarrera) throws Exception {
-        return cursoService.findByCodigoCarrera_Id(codigoCarrera);
+   // @GetMapping("/buscar/carrera")
+    //public List<Curso> getCursosByCarrera(@RequestParam Long codigoCarrera) throws Exception {
+     //   return cursoService.findByCodigoCarrera_Id(codigoCarrera);
     }
 
     /**
      * Búsqueda por semestre
      */
-    @GetMapping("/buscar/semestre")
-    public List<Curso> getCursosBySemestre(@RequestParam Long codigoSemestre) throws Exception {
-        return cursoService.findByCodigoSemestre_Id(codigoSemestre);
-    }
+
+   // @GetMapping("/buscar/semestre")
+    //public List<Curso> getCursosBySemestre(@RequestParam Long codigoSemestre) throws Exception {
+     //   return cursoService.findByCodigoSemestre_Id(codigoSemestre);
+    //}
 
     /**
      * Búsqueda por docente
      */
-    @GetMapping("/buscar/docente")
-    public List<Curso> getCursosByDocente(@RequestParam Long codigoDocente) throws Exception {
-        return cursoService.findByCodigoDocente_CodigoDocente(codigoDocente);
-    }
-}
+    //@GetMapping("/buscar/docente")
+    //public List<Curso> getCursosByDocente(@RequestParam Long codigoDocente) throws Exception {
+     //   return cursoService.findByCodigoDocente_CodigoDocente(codigoDocente);
+    //}
+
+

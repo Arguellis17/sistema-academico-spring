@@ -12,11 +12,11 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class EstudianteServiceImpl implements EstudianteService{
+public class EstudianteServiceImpl implements EstudianteService {
     private final EstudianteService estudianteService;
     private final CursoRepository cursoRepository;
     private final EstudianteRepository estudianteRepository;
-    private final HistorialAcademico historialAcademico;
+
 
     @Override
     public List<Estudiante> findAll() throws Exception{
@@ -112,7 +112,7 @@ public class EstudianteServiceImpl implements EstudianteService{
                 .toList();
 
         // Validar que todos los prerequisitos estén en la lista de aprobados
-        return curso.getPrerequisito().stream().allMatch(aprobados::contains);
+        return curso.getPrerequisitos().stream().allMatch(aprobados::contains);
     }
 
 

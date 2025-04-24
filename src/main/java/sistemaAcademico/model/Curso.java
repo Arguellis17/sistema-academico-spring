@@ -9,6 +9,8 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 public class Curso {
 
     @Id
@@ -38,9 +40,13 @@ public class Curso {
     )
     private List<Carrera> codigoCarrera;
 
-    @OneToOne
-    @JoinColumn(name = "codigo__pre_requisito", referencedColumnName = "codigo_curso")
-    private Curso preRequisito;
+    @ManyToMany
+    @JoinTable(
+            name = "curso_prerequisito",
+            joinColumns = @JoinColumn(name = "curso_id"),
+            inverseJoinColumns = @JoinColumn(name = "prerequisito_id")
+    )
+    private List<Curso> prerequisitos;
 
     @ManyToMany
     @JoinTable (
@@ -79,7 +85,7 @@ public class Curso {
     @OneToMany(mappedBy = "codigo_curso")
     private List<Horario> horarios;
 
-    private List<Curso> prerequisito;
+
 
 
 }
