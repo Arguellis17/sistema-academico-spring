@@ -5,5 +5,8 @@ import sistemaAcademico.model.Matricula;
 
 @Service
 public interface MatriculaService extends CrudService<Matricula, Long>{
-    /*public List<Matricula> findByFechaMatricula(Date fechaMatricula);*/
+    Matricula registrarMatricula(String estudianteId, String cursoId);
+    void cancelarMatricula(String matriculaId);
+    int consultarCuposDisponibles(String cursoId);
+    boolean validarPrerrequisitos(String estudianteId, String cursoId);
 }

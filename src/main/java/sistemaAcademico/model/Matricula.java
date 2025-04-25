@@ -7,7 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -19,7 +19,8 @@ public class Matricula {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long codigoMatricula;
-    private Date fechaMatricula;
+    private LocalDate fechaMatricula;
+
 
     @ManyToMany
     @JoinTable(name = "matricula_curso", joinColumns = @JoinColumn(name = "codigo_matricula"),
