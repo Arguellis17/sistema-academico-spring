@@ -10,11 +10,11 @@ import java.util.List;
 @Repository
 public interface EvaluacionRepository extends JpaRepository<Evaluacion, Long> {
 
-    //public List<Evaluacion> findByTipo(String tipo);
+    public List<Evaluacion> findByTipo(String tipo);
 
-    //public List<Evaluacion> findByPonderacion(float ponderacion);
+    public List<Evaluacion> findByPonderacion(float ponderacion);
 
-    //public List<Evaluacion> findByFechaEvaluacion(Date fechaEvaluacion);
+    public List<Evaluacion> findByFechaEvaluacion(Date fechaEvaluacion);
 
 
 }
