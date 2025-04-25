@@ -205,4 +205,9 @@ public class CursoServiceImpl implements CursoService {
         boolean solapan = horario1.getHoraInicio().before(horario2.getHoraFin()) && horario1.getHoraFin().after(horario2.getHoraInicio());
         return solapan;
     }
+    @Override
+    public List<Curso> findByCodigoCarreraId(Long codigoCarrera) {
+        // Llama al repositorio para obtener los cursos por codigoCarrera
+        return cursoRepository.findByCodigoCarrera_Id(codigoCarrera);
+    }
 }
