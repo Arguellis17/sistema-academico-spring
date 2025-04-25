@@ -85,7 +85,9 @@ public class Curso {
     @OneToMany(mappedBy = "codigo_curso")
     private List<Horario> horarios;
 
-
+    // Nuevos campos
+    private int cupoMaximo;   // Límite de cupos
+    private int cupoActual;
 
 
 }

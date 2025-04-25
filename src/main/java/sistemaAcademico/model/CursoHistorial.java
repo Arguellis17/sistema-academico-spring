@@ -28,4 +28,5 @@ public class CursoHistorial {
     private EstadoCurso estadoCurso;
 
     private float calificacionFinal;
+
 }

@@ -16,15 +16,15 @@ public interface CursoService extends CrudService<Curso, Long>{
 
     void inscribirEstudiante(Long codigoEstudiante, Estudiante estudiante);
 
-    void agregarPrerrequisito(Curso prerrequisito);
+    void agregarPrerrequisito(Long idCurso, Curso prerrequisito);
 
-    boolean validarPrerrequisitos(Long codigoEstudiante);
+    boolean validarPrerrequisitos(Long codigoEstudiante, Long idCursoDestino);
 
-    void agregarCurso();
+    void agregarCurso(Curso curso);
 
-    void eliminarCurso();
+    void eliminarCurso(Long idCurso);
 
-    boolean validarCupos();
+    boolean validarCupos(Long idCurso);
 
     Horario generarHorario();
 

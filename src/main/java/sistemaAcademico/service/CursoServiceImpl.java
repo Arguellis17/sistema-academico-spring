@@ -1,21 +1,25 @@
 package sistemaAcademico.service;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import sistemaAcademico.model.Curso;
-import sistemaAcademico.model.Estudiante;
-import sistemaAcademico.model.Horario;
+import sistemaAcademico.model.*;
+import sistemaAcademico.repository.CursoHistorialRepository;
 import sistemaAcademico.repository.CursoRepository;
+import sistemaAcademico.repository.HorarioRepository;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
 public class CursoServiceImpl implements CursoService {
 
     private final CursoRepository cursoRepository;
+
+    private final CursoHistorialRepository cursoHistorialRepository;
+
+    @Autowired
+    private HorarioRepository horarioRepository;
 
     @Override
     public List<Curso> findAll() {
@@ -58,57 +62,147 @@ public class CursoServiceImpl implements CursoService {
     }
 
     @Override
-    public void inscribirEstudiante(Long codigoEstudiante, Estudiante estudiante) {
-        // Ejemplo simple (necesita modelo Curso tener una lista de estudiantes)
-        Optional<Curso> cursoOpt = cursoRepository.findById(codigoEstudiante);
+    public void inscribirEstudiante(Long idCurso, Estudiante estudiante) {
+        Optional<Curso> cursoOpt = cursoRepository.findById(idCurso);
         if (cursoOpt.isPresent()) {
             Curso curso = cursoOpt.get();
+            if (curso.getEstudiantes() == null) {
+                curso.setEstudiantes(new ArrayList<>());
+            }
             curso.getEstudiantes().add(estudiante);
             cursoRepository.save(curso);
         }
     }
 
     @Override
-    public void agregarPrerrequisito(Curso prerrequisito) {
-        // Esto requiere contexto de a qué curso se le agrega
-        // Aquí sería necesario identificar el curso actual
-        // Este método es muy específico y se debe ajustar según tu modelo
+    public void agregarPrerrequisito(Long idCurso, Curso prerrequisito) {
+        Optional<Curso> cursoOpt = cursoRepository.findById(idCurso);
+        if (cursoOpt.isPresent()) {
+            Curso curso = cursoOpt.get();
+
+            if (curso.getPrerequisitos() == null) {
+                curso.setPrerequisitos(new ArrayList<>());
+            }
+
+            curso.getPrerequisitos().add(prerrequisito);
+            cursoRepository.save(curso);
+        }
     }
 
     @Override
-    public boolean validarPrerrequisitos(Long codigoEstudiante) {
-        // Lógica ficticia: podrías verificar que el estudiante tenga los cursos requeridos
+    public boolean validarPrerrequisitos(Long codigoEstudiante, Long idCursoDestino) {
+        Curso cursoDestino = cursoRepository.findById(idCursoDestino)
+                .orElseThrow(() -> new RuntimeException("Curso no encontrado"));
+
+        // Obtener historial académico del estudiante
+        List<CursoHistorial> historial = cursoHistorialRepository
+                .findByHistorialAcademico_Estudiante_CodigoEstudiante(codigoEstudiante);
+
+        // Obtener los códigos de los cursos aprobados
+        List<Long> cursosAprobados = historial.stream()
+                .filter(ch -> ch.getEstadoCurso() == EstadoCurso.APROBADO)
+                .map(ch -> ch.getCurso().getCodigoCurso())
+                .toList();
+
+        // Validar que todos los prerrequisitos estén aprobados
+        for (Curso prerrequisito : cursoDestino.getPrerequisitos()) {
+            if (!cursosAprobados.contains(prerrequisito.getCodigoCurso())) {
+                return false;
+            }
+        }
+
         return true;
     }
 
     @Override
-    public void agregarCurso() {
-        // Esta lógica dependerá de tu sistema
-        // Por ejemplo, podrías registrar un curso nuevo con datos por defecto o un formulario
+    public void agregarCurso(Curso curso) {
+        cursoRepository.save(curso);
     }
 
     @Override
-    public void eliminarCurso() {
-        // Este método debería recibir un ID para saber qué curso eliminar
-        // Aquí falta información (como un Long idCurso)
+    public void eliminarCurso(Long idCurso) {
+        if (cursoRepository.existsById(idCurso)) {
+            cursoRepository.deleteById(idCurso);
+        } else {
+            throw new RuntimeException("Curso con ID " + idCurso + " no encontrado.");
+        }
     }
 
     @Override
-    public boolean validarCupos() {
-        // Supón que cada curso tiene un límite de cupos
-        // Aquí puedes validar si aún hay cupos disponibles
-        return true;
+    public boolean validarCupos(Long idCurso) {
+        Curso curso = cursoRepository.findById(idCurso)
+                .orElseThrow(() -> new RuntimeException("Curso con ID " + idCurso + " no encontrado."));
+
+        // Si usas estudiantes.size():
+        return curso.getEstudiantes().size() < curso.getCupoMaximo();
+
     }
 
     @Override
     public Horario generarHorario() {
-        // Deberías construir un horario con la lógica que tengas
-        return new Horario(); // Solo como placeholder
+        // Obtener el curso del cual se generará el horario
+        // Este ejemplo supone que tienes el curso disponible de alguna forma, por ejemplo, a través de un ID o una consulta
+        Curso curso = new Curso(); // Obtén el curso (por ID o alguna otra forma)
+
+        // Definir el tipo de sesión (por ejemplo, "Teoría", "Prácticas", etc.)
+        String tipoSesion = "Teoría"; // Esto puede ser dinámico según el curso
+
+        // Usamos Calendar para establecer las horas
+        Calendar calendar = Calendar.getInstance();
+
+        // Definir la hora de inicio (ejemplo: 08:00 AM)
+        calendar.set(Calendar.HOUR_OF_DAY, 8);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        Date horaInicio = calendar.getTime();
+
+        // Definir la hora de fin (ejemplo: 10:00 AM)
+        calendar.set(Calendar.HOUR_OF_DAY, 10);
+        Date horaFin = calendar.getTime();
+
+        // Crear el objeto Horario y asignar los valores obtenidos
+        Horario horario = new Horario();
+        horario.setCodigoCurso(curso);  // Asignar el curso relacionado
+        horario.setHoraInicio(horaInicio);  // Asignar la hora de inicio
+        horario.setHoraFin(horaFin);  // Asignar la hora de fin
+        horario.setTipoSesion(tipoSesion);  // Asignar el tipo de sesión
+
+        // Guardar el horario en la base de datos si es necesario
+        horarioRepository.save(horario);
+
+        // Retornar el objeto Horario creado
+        return horario;
     }
 
     @Override
     public boolean verificarDisponibilidad() {
-        // Verificar que no se crucen horarios, por ejemplo
-        return true;
+        // Obtener todos los horarios de cursos
+        List<Horario> todosLosHorarios = horarioRepository.findAll(); // Esto puede ser modificado dependiendo de cómo obtienes los cursos o los horarios
+
+        // Comparar cada horario con todos los demás para verificar que no haya cruces
+        for (int i = 0; i < todosLosHorarios.size(); i++) {
+            for (int j = i + 1; j < todosLosHorarios.size(); j++) {
+                Horario horario1 = todosLosHorarios.get(i);
+                Horario horario2 = todosLosHorarios.get(j);
+
+                // Verificar si los cursos tienen el mismo día, mismo tipo de sesión y se solapan
+                if (horario1.getCodigoCurso().equals(horario2.getCodigoCurso())) {
+                    continue; // Si son el mismo curso, no debe compararse consigo mismo
+                }
+
+                // Si los horarios se solapan
+                if (verificarSolapamiento(horario1, horario2)) {
+                    return false;  // Si hay solapamiento, se retorna falso
+                }
+            }
+        }
+        return true;  // Si no hay solapamiento, se retorna verdadero
+    }
+
+    // Método para verificar si dos horarios se solapan
+    private boolean verificarSolapamiento(Horario horario1, Horario horario2) {
+        // Verificar si las horas de inicio y fin se solapan
+        boolean solapan = horario1.getHoraInicio().before(horario2.getHoraFin()) && horario1.getHoraFin().after(horario2.getHoraInicio());
+        return solapan;
     }
 }
