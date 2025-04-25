@@ -64,7 +64,7 @@ public class RecursoAcademicoController {
         recursoAcademicoService.deleteAll();
     }
 
-    /*
+
     @GetMapping("/buscar/titulo")
     public List<RecursoAcademico> getRecursosByTitulo(@RequestParam String titulo) throws Exception {
         return recursoAcademicoService.findByTitulo(titulo);
@@ -94,5 +94,5 @@ public class RecursoAcademicoController {
     public List<RecursoAcademico> getRecursosByTipoEspacio(@RequestParam String tipoEspacio) throws Exception {
         return recursoAcademicoService.findByTipoEspacio(tipoEspacio);
     }
-    */
+
 }

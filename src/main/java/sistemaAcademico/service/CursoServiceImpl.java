@@ -18,7 +18,7 @@ public class CursoServiceImpl implements CursoService {
 
     private final CursoHistorialRepository cursoHistorialRepository;
 
-    @Autowired
+
     private HorarioRepository horarioRepository;
 
     @Override

@@ -9,7 +9,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public abstract class EspacioServiceImpl extends EspacioService {
+public class EspacioServiceImpl extends EspacioService {
     private final EspacioRepository repository;
 
     public List<Espacio> findAll() { return repository.findAll(); }

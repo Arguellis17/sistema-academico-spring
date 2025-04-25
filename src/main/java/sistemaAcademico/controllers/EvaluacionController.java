@@ -69,7 +69,7 @@ public class EvaluacionController {
     /*
      * Búsquedas adicionales (por si luego decides implementarlas)
      */
-    /*
+
     @GetMapping("/buscar/tipo")
     public List<Evaluacion> getByTipo(@RequestParam String tipo) throws Exception {
         return evaluacionService.findByTipo(tipo);
@@ -84,5 +84,5 @@ public class EvaluacionController {
     public List<Evaluacion> getByFechaEvaluacion(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date fechaEvaluacion) throws Exception {
         return evaluacionService.findByFechaEvaluacion(fechaEvaluacion);
     }
-    */
+
 }

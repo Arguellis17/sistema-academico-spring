@@ -70,7 +70,7 @@ public class PrestamoRecursoController {
      * Métodos de búsqueda personalizada
      * Descomenta e implementa si agregas la lógica en el servicio y repositorio
      */
-    /*
+
     @GetMapping("/buscar/fecha-prestamo")
     public List<PrestamoRecurso> getByFechaPrestamo(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date fechaPrestamo) throws Exception {
         return prestamoRecursoService.findByFechaPrestamo(fechaPrestamo);
@@ -80,5 +80,5 @@ public class PrestamoRecursoController {
     public List<PrestamoRecurso> getByFechaDevolucion(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date fechaDevolucion) throws Exception {
         return prestamoRecursoService.findByFechaDevolucion(fechaDevolucion);
     }
-    */
+
 }

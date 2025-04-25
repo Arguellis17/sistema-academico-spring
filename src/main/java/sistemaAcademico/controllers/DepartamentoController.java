@@ -68,10 +68,19 @@ public class DepartamentoController {
      * Métodos personalizados futuros:
      * Descomenta e implementa estos métodos en el service y repository si los necesitas.
      */
-    /*
+
     @GetMapping("/buscar/nombre")
     public List<Departamento> getDepartamentosByNombre(@RequestParam String nombre) throws Exception {
         return departamentoService.findByNombre(nombre);
     }
-    */
+
+
+    /**
+     * Busca departamentos por código de departamento
+     */
+    @GetMapping("/buscar/codigo")
+    public List<Departamento> getDepartamentosByCodigo(@RequestParam String codigoDepartamento) throws Exception {
+        return departamentoService.findByCodigoDepartamento(codigoDepartamento);
+    }
+
 }

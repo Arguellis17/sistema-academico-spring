@@ -13,12 +13,14 @@ import java.util.Optional;
 @RequestMapping("/api/carreras")
 @RequiredArgsConstructor
 public class CarreraController {
+
     private final CarreraService carreraService;
 
     // Obtener todas las carreras
     @GetMapping
-    public List<Carrera> getAll() throws Exception {
-        return carreraService.findAll();
+    public ResponseEntity<List<Carrera>> getAll() throws Exception {
+        List<Carrera> carreras = carreraService.findAll();
+        return ResponseEntity.ok(carreras); // Devuelve la lista con código 200
     }
 
     // Obtener carrera por ID
@@ -26,13 +28,14 @@ public class CarreraController {
     public ResponseEntity<Carrera> getById(@PathVariable Long id) throws Exception {
         Optional<Carrera> carrera = carreraService.findById(id);
         return carrera.map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.notFound().build());
+                .orElseGet(() -> ResponseEntity.notFound().build()); // 404 si no se encuentra
     }
 
     // Guardar nueva carrera
     @PostMapping
-    public Carrera save(@RequestBody Carrera carrera) throws Exception {
-        return carreraService.save(carrera);
+    public ResponseEntity<Carrera> save(@RequestBody Carrera carrera) throws Exception {
+        Carrera savedCarrera = carreraService.save(carrera);
+        return ResponseEntity.status(201).body(savedCarrera); // 201 para creación exitosa
     }
 
     // Actualizar carrera existente
@@ -40,10 +43,10 @@ public class CarreraController {
     public ResponseEntity<Carrera> update(@PathVariable Long id, @RequestBody Carrera carreraActualizada) throws Exception {
         Optional<Carrera> existente = carreraService.findById(id);
         if (existente.isPresent()) {
-            carreraActualizada.setCodigoCarrera(id);
-            return ResponseEntity.ok(carreraService.update(carreraActualizada));
+            carreraActualizada.setCodigoCarrera(id); // Se actualiza el ID
+            return ResponseEntity.ok(carreraService.update(carreraActualizada)); // 200 si es exitoso
         }
-        return ResponseEntity.notFound().build();
+        return ResponseEntity.notFound().build(); // 404 si no se encuentra
     }
 
     // Eliminar carrera
@@ -51,22 +54,22 @@ public class CarreraController {
     public ResponseEntity<Void> delete(@PathVariable Long id) throws Exception {
         if (carreraService.findById(id).isPresent()) {
             carreraService.deleteById(id);
-            return ResponseEntity.noContent().build();
+            return ResponseEntity.noContent().build(); // 204 si se elimina exitosamente
         }
-        return ResponseEntity.notFound().build();
+        return ResponseEntity.notFound().build(); // 404 si no se encuentra
     }
 
-    // Buscar carreras por nombre (si implementas en el servicio y repositorio)
-    /*
+    // Buscar carreras por nombre
     @GetMapping("/nombre/{nombre}")
-    public List<Carrera> getByNombre(@PathVariable String nombre) {
-        return carreraService.findByNombreCarrera(nombre);
+    public ResponseEntity<List<Carrera>> getByNombre(@PathVariable String nombre) {
+        List<Carrera> carreras = carreraService.findByNombreCarrera(nombre);
+        return carreras.isEmpty() ? ResponseEntity.noContent().build() : ResponseEntity.ok(carreras); // 204 si no hay resultados
     }
 
-    // Buscar por duración
+    // Buscar carreras por duración
     @GetMapping("/duracion/{duracion}")
-    public List<Carrera> getByDuracion(@PathVariable int duracion) {
-        return carreraService.findByDuracion(duracion);
+    public ResponseEntity<List<Carrera>> getByDuracion(@PathVariable int duracion) {
+        List<Carrera> carreras = carreraService.findByDuracion(duracion);
+        return carreras.isEmpty() ? ResponseEntity.noContent().build() : ResponseEntity.ok(carreras); // 204 si no hay resultados
     }
-    */
 }

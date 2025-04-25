@@ -64,10 +64,10 @@ public class HistorialAcademicoController {
         historialAcademicoService.deleteAll();
     }
 
-    /*
+
     @GetMapping("/buscar/promedio")
     public List<HistorialAcademico> getHistorialesByPromedioGeneral(@RequestParam float promedioGeneral) throws Exception {
         return historialAcademicoService.findByPromedioGeneral(promedioGeneral);
     }
-    */
+
 }

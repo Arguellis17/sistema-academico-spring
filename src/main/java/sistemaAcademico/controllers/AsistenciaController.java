@@ -13,11 +13,13 @@ import java.util.List;
 @RequestMapping("/api/asistencias")
 @RequiredArgsConstructor
 public class AsistenciaController {
+
     private final AsistenciaService asistenciaService;
 
     @GetMapping
-    public List<Asistencia> getAll() throws Exception {
-        return asistenciaService.findAll();
+    public ResponseEntity<List<Asistencia>> getAll() throws Exception {
+        List<Asistencia> asistencias = asistenciaService.findAll();
+        return ResponseEntity.ok(asistencias);
     }
 
     @GetMapping("/{id}")
@@ -28,24 +30,27 @@ public class AsistenciaController {
     }
 
     @PostMapping
-    public Asistencia save(@RequestBody Asistencia asistencia) throws Exception {
-        return asistenciaService.save(asistencia);
+    public ResponseEntity<Asistencia> save(@RequestBody Asistencia asistencia) throws Exception {
+        Asistencia savedAsistencia = asistenciaService.save(asistencia);
+        return ResponseEntity.status(201).body(savedAsistencia); // Código 201 para creación exitosa
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) throws Exception {
         asistenciaService.deleteById(id);
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.noContent().build(); // Código 204 para éxito sin contenido
     }
 
     @GetMapping("/fecha")
-    public List<Asistencia> getByFecha(@RequestParam("fecha") Date fecha) {
-        return asistenciaService.findByFechaAsistencia(fecha);
+    public ResponseEntity<List<Asistencia>> getByFecha(@RequestParam("fecha") Date fecha) {
+        List<Asistencia> result = asistenciaService.findByFechaAsistencia(fecha);
+        return result.isEmpty() ? ResponseEntity.noContent().build() : ResponseEntity.ok(result);
     }
 
     @GetMapping("/estado")
-    public List<Asistencia> getByEstado(@RequestParam("asistencia") boolean asistencia) {
-        return asistenciaService.findByAsistencia( asistencia);
+    public ResponseEntity<List<Asistencia>> getByEstado(@RequestParam("asistencia") boolean asistencia) {
+        List<Asistencia> result = asistenciaService.findByAsistencia(asistencia);
+        return result.isEmpty() ? ResponseEntity.noContent().build() : ResponseEntity.ok(result);
     }
 
 
