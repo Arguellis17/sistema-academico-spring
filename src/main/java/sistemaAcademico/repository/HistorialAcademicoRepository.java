@@ -9,5 +9,5 @@ import java.util.List;
 @Repository
 public interface HistorialAcademicoRepository extends JpaRepository<HistorialAcademico, Long> {
 
-    //public List<HistorialAcademico> findByPromedioGeneral(float promedioGeneral);
+    public List<HistorialAcademico> findByPromedioGeneral(float promedioGeneral);
 }
