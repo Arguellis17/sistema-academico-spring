@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import sistemaAcademico.model.Departamento;
 import sistemaAcademico.model.Docente;
+import sistemaAcademico.model.Semestre;
 import sistemaAcademico.repository.DepartamentoRepository;
 import sistemaAcademico.repository.DocenteRepository;
 
@@ -38,7 +39,7 @@ public class DepartamentoServiceImpl implements DepartamentoService {
     }
 
     @Override
-    public Optional<Departamento> findById(Long id) throws Exception {
+    public Semestre findById(Long id) throws Exception {
         return departamentoRepository.findById(id);
     }
 

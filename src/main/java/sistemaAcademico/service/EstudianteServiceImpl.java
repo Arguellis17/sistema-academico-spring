@@ -7,7 +7,6 @@ import sistemaAcademico.repository.CursoRepository;
 import sistemaAcademico.repository.EstudianteRepository;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -33,7 +32,7 @@ public class EstudianteServiceImpl implements EstudianteService {
     }
 
     @Override
-    public Optional<Estudiante> findById(Long id) throws Exception {
+    public Semestre findById(Long id) throws Exception {
         return estudianteRepository.findById(id);
     }
 

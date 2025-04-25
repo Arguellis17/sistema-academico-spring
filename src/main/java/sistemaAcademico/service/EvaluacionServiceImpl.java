@@ -3,11 +3,11 @@ package sistemaAcademico.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import sistemaAcademico.model.Evaluacion;
+import sistemaAcademico.model.Semestre;
 import sistemaAcademico.repository.EvaluacionRepository;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class EvaluacionServiceImpl implements EvaluacionService {
@@ -35,7 +35,7 @@ public class EvaluacionServiceImpl implements EvaluacionService {
     }
 
     @Override
-    public Optional<Evaluacion> findById(Long id) throws Exception {
+    public Semestre findById(Long id) throws Exception {
         return evaluacionRepository.findById(id);
     }
 

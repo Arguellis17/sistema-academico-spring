@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import sistemaAcademico.model.Facultad;
 import sistemaAcademico.model.Departamento;
+import sistemaAcademico.model.Semestre;
 import sistemaAcademico.repository.DepartamentoRepository;
 import sistemaAcademico.repository.FacultadRepository;
 
@@ -38,7 +39,7 @@ public class FacultadServiceImpl implements FacultadService {
     }
 
     @Override
-    public Optional<Facultad> findById(Long id) throws Exception {
+    public Semestre findById(Long id) throws Exception {
         return facultadRepository.findById(id);
     }
 

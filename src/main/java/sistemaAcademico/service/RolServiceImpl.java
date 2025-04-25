@@ -3,10 +3,10 @@ package sistemaAcademico.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import sistemaAcademico.model.Rol;
+import sistemaAcademico.model.Semestre;
 import sistemaAcademico.repository.RolRepository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -20,7 +20,7 @@ public class RolServiceImpl implements RolService{
     }
 
     @Override
-    public Optional<Rol> findById(Long id) throws Exception {
+    public Semestre findById(Long id) throws Exception {
         return rolRepository.findById(id);
     }
 

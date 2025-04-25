@@ -3,9 +3,9 @@ package sistemaAcademico.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import sistemaAcademico.model.CursoHistorial;
+import sistemaAcademico.model.Semestre;
 import sistemaAcademico.repository.CursoHistorialRepository;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -29,7 +29,7 @@ public class CursoHistorialServiceImpl implements CursoHistorialService {
     }
 
     @Override
-    public Optional<CursoHistorial> findById(Long id) throws Exception {
+    public Semestre findById(Long id) throws Exception {
         return cursoHistorialRepository.findById(id);
     }
 

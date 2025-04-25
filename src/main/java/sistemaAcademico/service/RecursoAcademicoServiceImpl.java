@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import sistemaAcademico.model.RecursoAcademico;
+import sistemaAcademico.model.Semestre;
 import sistemaAcademico.repository.RecursoAcademicoRepository;
 
 
@@ -28,7 +29,7 @@ public class RecursoAcademicoServiceImpl implements RecursoAcademicoService {
     }
 
     @Override
-    public Optional<RecursoAcademico> findById(Long id) {
+    public Semestre findById(Long id) {
         return recursoAcademicoRepository.findById(id);
     }
 

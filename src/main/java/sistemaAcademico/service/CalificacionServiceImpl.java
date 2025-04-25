@@ -1,14 +1,12 @@
 package sistemaAcademico.service;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import sistemaAcademico.model.Calificacion;
+import sistemaAcademico.model.Semestre;
 import sistemaAcademico.repository.CalificacionRepository;
-import sistemaAcademico.service.CalificacionService;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -33,7 +31,7 @@ public class CalificacionServiceImpl implements CalificacionService {
     }
 
     @Override
-    public Optional<Calificacion> findById(Long id) throws Exception {
+    public Semestre findById(Long id) throws Exception {
         return repository.findById(id);
     }
 

@@ -1,7 +1,6 @@
 package sistemaAcademico.service;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import sistemaAcademico.model.*;
 import sistemaAcademico.repository.CursoHistorialRepository;
@@ -27,7 +26,7 @@ public class CursoServiceImpl implements CursoService {
     }
 
     @Override
-    public Optional<Curso> findById(Long id) {
+    public Semestre findById(Long id) {
         return cursoRepository.findById(id);
     }
 

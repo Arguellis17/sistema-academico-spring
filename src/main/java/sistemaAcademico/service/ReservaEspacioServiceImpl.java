@@ -3,11 +3,11 @@ package sistemaAcademico.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import sistemaAcademico.model.ReservaEspacio;
+import sistemaAcademico.model.Semestre;
 import sistemaAcademico.repository.ReservaEspacioRepository;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -31,7 +31,7 @@ public class ReservaEspacioServiceImpl implements ReservaEspacioService {
     }
 
     @Override
-    public Optional<ReservaEspacio> findById(Long id) {
+    public Semestre findById(Long id) {
         return reservaEspacioRepository.findById(id);
     }
 

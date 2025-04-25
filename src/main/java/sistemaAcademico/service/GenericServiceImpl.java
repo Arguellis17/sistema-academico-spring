@@ -1,9 +1,10 @@
 package sistemaAcademico.service;
 
 import org.springframework.data.repository.CrudRepository;
+import sistemaAcademico.model.Semestre;
 
 import java.util.List;
-import java.util.Optional;
+
 public class GenericServiceImpl<T, ID> implements CrudService<T, ID>{
 
     protected CrudRepository<T, ID> getRepository() {
@@ -38,7 +39,7 @@ public class GenericServiceImpl<T, ID> implements CrudService<T, ID>{
     }
 
     @Override
-    public Optional<T> findById(ID id) throws Exception {
+    public Semestre findById(ID id) throws Exception {
         try {
             return getRepository().findById(id);
         } catch (Exception e) {

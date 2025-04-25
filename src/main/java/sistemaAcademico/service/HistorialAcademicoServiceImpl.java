@@ -2,13 +2,10 @@ package sistemaAcademico.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import sistemaAcademico.model.CursoHistorial;
-import sistemaAcademico.model.EstadoCurso;
-import sistemaAcademico.model.HistorialAcademico;
+import sistemaAcademico.model.*;
 import sistemaAcademico.repository.HistorialAcademicoRepository;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -37,7 +34,7 @@ public class HistorialAcademicoServiceImpl implements HistorialAcademicoService 
     }
 
     @Override
-    public Optional<HistorialAcademico> findById(Long id) throws Exception {
+    public Semestre findById(Long id) throws Exception {
         return historialAcademicoRepository.findById(id);
     }
 
