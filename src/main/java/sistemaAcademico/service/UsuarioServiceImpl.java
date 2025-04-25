@@ -2,12 +2,11 @@ package sistemaAcademico.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import sistemaAcademico.model.Semestre;
 import sistemaAcademico.model.Usuario;
 import sistemaAcademico.repository.UsuarioRepository;
-import sistemaAcademico.service.UsuarioService;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -21,7 +20,7 @@ public class UsuarioServiceImpl implements UsuarioService{
     }
 
     @Override
-    public Optional<Usuario> findById(Long id) throws Exception {
+    public Semestre findById(Long id) throws Exception {
         return usuarioRepository.findById(id);
     }
 
@@ -80,19 +79,19 @@ public class UsuarioServiceImpl implements UsuarioService{
 
     @Override
     public void recuperarContrasena(Long idUsuario) throws Exception {
+        // Aquí puedes implementar lógica para enviar un correo o mensaje con la contraseña temporal
         Usuario usuario = usuarioRepository.findById(idUsuario)
                 .orElseThrow(() -> new Exception("Usuario no encontrado"));
-        // Simulación de recuperación de contraseña (en sistemas reales se enviaría un correo)
-        String contrasenaTemporal = "temp123";
-        usuario.setClave(contrasenaTemporal);
+
+        // Ejemplo: reiniciar la contraseña con una temporal (en una app real, deberías notificarla)
+        usuario.setClave("temporal123"); // ⚠️ Reemplazar con lógica segura
         usuarioRepository.save(usuario);
-        // Podrías agregar aquí lógica para enviar notificación o correo si se implementa
     }
 
     @Override
     public Usuario buscarPorDocumento(String documento) throws Exception {
         return usuarioRepository.findByPersonaDocumento(documento)
-                .orElseThrow(() -> new Exception("Usuario no encontrado con documento: " + documento));
+                .orElseThrow(() -> new Exception("Usuario no encontrado"));
     }
 
     @Override
@@ -108,6 +107,6 @@ public class UsuarioServiceImpl implements UsuarioService{
     @Override
     public Usuario buscarPorNombreYClave(String nombre, String clave) throws Exception {
         return usuarioRepository.findByNombreAndClave(nombre, clave)
-                .orElseThrow(() -> new Exception("Usuario no encontrado o credenciales incorrectas"));
+                .orElseThrow(() -> new Exception("Usuario no encontrado"));
     }
 }

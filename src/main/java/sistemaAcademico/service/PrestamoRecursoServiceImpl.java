@@ -3,6 +3,7 @@ package sistemaAcademico.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import sistemaAcademico.model.PrestamoRecurso;
+import sistemaAcademico.model.Semestre;
 import sistemaAcademico.repository.PrestamoRecursoRepository;
 
 import java.util.Date;
@@ -35,7 +36,7 @@ public class PrestamoRecursoServiceImpl implements PrestamoRecursoService {
     }
 
     @Override
-    public Optional<PrestamoRecurso> findById(Long id) throws Exception {
+    public Semestre findById(Long id) throws Exception {
         return prestamoRecursoRepository.findById(id);
     }
 

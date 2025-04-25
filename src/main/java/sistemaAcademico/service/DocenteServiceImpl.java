@@ -7,7 +7,6 @@ import sistemaAcademico.repository.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -35,7 +34,7 @@ public class DocenteServiceImpl implements DocenteService {
     }
 
     @Override
-    public Optional<Docente> findById(Long id) throws Exception {
+    public Semestre findById(Long id) throws Exception {
         return docenteRepository.findById(id);
     }
 

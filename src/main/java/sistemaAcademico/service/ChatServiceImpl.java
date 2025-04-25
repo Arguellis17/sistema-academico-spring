@@ -3,9 +3,9 @@ package sistemaAcademico.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import sistemaAcademico.model.Chat;
+import sistemaAcademico.model.Semestre;
 import sistemaAcademico.model.Usuario;
 import sistemaAcademico.repository.ChatRepository;
-import sistemaAcademico.service.ChatService;
 
 import java.util.Date;
 import java.util.List;
@@ -23,7 +23,7 @@ public class ChatServiceImpl implements ChatService {
     }
 
     @Override
-    public Optional<Chat> findById(Long id) throws Exception {
+    public Semestre findById(Long id) throws Exception {
         return chatRepository.findById(id);
     }
 

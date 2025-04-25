@@ -3,12 +3,11 @@ package sistemaAcademico.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import sistemaAcademico.model.Asistencia;
+import sistemaAcademico.model.Semestre;
 import sistemaAcademico.repository.AsistenciaRepository;
-import sistemaAcademico.service.AsistenciaService;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -23,7 +22,7 @@ public class AsistenciaServiceImpl implements AsistenciaService{
     }
 
     @Override
-    public Optional<Asistencia> findById(Long id) {
+    public Semestre findById(Long id) {
         return asistenciaRepository.findById(id);
     }
 

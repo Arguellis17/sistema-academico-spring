@@ -3,6 +3,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import sistemaAcademico.model.Curso;
 import sistemaAcademico.model.Horario;
+import sistemaAcademico.model.Semestre;
 import sistemaAcademico.repository.HorarioRepository;
 
 import java.util.*;
@@ -33,7 +34,7 @@ public class HorarioServiceImpl implements HorarioService {
     }
 
     @Override
-    public Optional<Horario> findById(Long id) {
+    public Semestre findById(Long id) {
         return horarioRepository.findById(id);
     }
 

@@ -3,10 +3,10 @@ package sistemaAcademico.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import sistemaAcademico.model.Carrera;
+import sistemaAcademico.model.Semestre;
 import sistemaAcademico.repository.CarreraRepository;
 
 import java.util.List;
-import java.util.Optional;
 
 
 @Service
@@ -31,7 +31,7 @@ public class CarreraServiceImpl implements CarreraService {
     }
 
     @Override
-    public Optional<Carrera> findById(Long id) throws Exception {
+    public Semestre findById(Long id) throws Exception {
         return repository.findById(id);
     }
 

@@ -4,11 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import sistemaAcademico.model.Curso;
 import sistemaAcademico.model.Programa;
+import sistemaAcademico.model.Semestre;
 import sistemaAcademico.repository.CursoRepository;
 import sistemaAcademico.repository.ProgramaRepository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ProgramaServiceImpl implements ProgramaService {
@@ -38,7 +38,7 @@ public class ProgramaServiceImpl implements ProgramaService {
     }
 
     @Override
-    public Optional<Programa> findById(Long id) throws Exception {
+    public Semestre findById(Long id) throws Exception {
         return programaRepository.findById(id);
     }
 
