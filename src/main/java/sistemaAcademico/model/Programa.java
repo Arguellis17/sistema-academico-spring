@@ -19,11 +19,16 @@ public class Programa {
     private Long codigoPrograma;
     private String nombre;
     private String descripcion;
-    @OneToMany(mappedBy = "codigoPrograma")
+    @ManyToMany
+    @JoinTable(
+            name = "programa_carrera",
+            joinColumns = @JoinColumn(name = "codigo_programa"),
+            inverseJoinColumns = @JoinColumn(name = "codigo_carrera")
+    )
     private List<Carrera> codigoCarrera;
 
     // Agregando la relación con Curso
-    @ManyToMany(mappedBy = "codigo_programa")
+    @ManyToMany(mappedBy = "codigoPrograma")
     private List<Curso> cursos;
 
 }

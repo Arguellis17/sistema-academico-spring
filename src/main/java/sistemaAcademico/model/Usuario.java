@@ -50,7 +50,6 @@ public class Usuario {
     @OneToMany(mappedBy = "usuario")
     private List<Notificacion> notificacionesEnviadas;
 
-    // Notificaciones recibidas por este usuario
-    @OneToMany(mappedBy = "destinatario")
+    @OneToMany(mappedBy = "usuario")  // Cambiar "destinatario" por "usuario"
     private List<Notificacion> notificacionesRecibidas;
 }

@@ -27,8 +27,8 @@ public class EvaluacionServiceImpl implements EvaluacionService {
 
     @Override
     public Evaluacion update(Evaluacion evaluacion) throws Exception {
-        if (evaluacion.getCodigoEvaluacion() == null ||
-                !evaluacionRepository.existsById(evaluacion.getCodigoEvaluacion())) {
+        if (evaluacion.getCodigo_evaluacion() == null ||
+                !evaluacionRepository.existsById(evaluacion.getCodigo_evaluacion())) {
             throw new Exception("La evaluación no existe o no tiene un ID válido");
         }
         return evaluacionRepository.save(evaluacion);

@@ -20,8 +20,9 @@ public class RecursoAcademico {
     private String titulo;
     private String tipo;
 
-    @ManyToMany(mappedBy = "recursosAcademicos")
-    private List<Curso> codigoCurso;
+    @ManyToOne
+    @JoinColumn(name = "codigo_curso", nullable = false)
+    private Curso codigoCurso;
 
     private String nombreRecursoAcademico;
     private boolean disponible;

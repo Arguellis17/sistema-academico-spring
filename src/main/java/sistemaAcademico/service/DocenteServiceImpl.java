@@ -101,7 +101,7 @@ public class DocenteServiceImpl implements DocenteService {
 
         Calificacion nuevaCalificacion = new Calificacion();
         nuevaCalificacion.setCodigoEstudiante(estudiante);
-        nuevaCalificacion.setCodigoEvaluacion(evaluacion);
+        nuevaCalificacion.setCodigo_evaluacion(evaluacion);
         nuevaCalificacion.setNota(nota);
 
         calificacionRepository.save(nuevaCalificacion);
