@@ -1,19 +1,36 @@
 package sistemaAcademico.service;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import sistemaAcademico.model.Rol;
+import sistemaAcademico.model.Usuario;
+import sistemaAcademico.repository.RolRepository;
+import sistemaAcademico.repository.UsuarioRepository;
 
-import java.util.List;
+import java.util.Optional;
 
 @Service
-public interface RolService extends CrudService<Rol, Long>{
-    /*public List<Rol> findByNombre(String nombre);
+@RequiredArgsConstructor
+public class RolService {
 
-    public List<Rol> findByTipoRol(String tipoRol);*/
+    private final UsuarioRepository usuarioRepository;
+    private final RolRepository rolRepository;
 
-    List<Rol> findByNombre(String nombre) throws Exception;
+    public void asignarRol(Long codigoUsuario, Long codigoRol) {
+        Optional<Usuario> usuarioOpt = usuarioRepository.findById(codigoUsuario);
+        Optional<Rol> rolOpt = rolRepository.findById(codigoRol);
 
-    List<Rol> findByTipoRol(String tipoRol) throws Exception;
+        if (usuarioOpt.isEmpty()) {
+            throw new RuntimeException("Usuario no encontrado con código: " + codigoUsuario);
+        }
+        if (rolOpt.isEmpty()) {
+            throw new RuntimeException("Rol no encontrado con código: " + codigoRol);
+        }
 
+        Usuario usuario = usuarioOpt.get();
+        Rol rol = rolOpt.get();
 
+        usuario.setRol(rol);
+        usuarioRepository.save(usuario);
+    }
 }
