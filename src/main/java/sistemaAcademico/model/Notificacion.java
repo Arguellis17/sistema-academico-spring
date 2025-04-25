@@ -12,6 +12,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Notificacion {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long codigoNotificacion;
@@ -29,22 +30,9 @@ public class Notificacion {
 
     private boolean leido = false;
 
-    private Long codigoUsuarioDestino;
-
-    private String nombreUsuarioDestino;
-
-    // Relación con el usuario que envía la notificación
+    // Relación con el usuario que recibe la notificación
     @ManyToOne
     @JoinColumn(name = "codigo_usuario", nullable = false)
     private Usuario usuario;
 
-    public Notificacion(String tipo, String mensaje, LocalDateTime fechaEnvio, Long codigoUsuarioDestino, String nombreUsuarioDestino, Usuario usuario) {
-        this.tipo = tipo;
-        this.mensaje = mensaje;
-        this.fechaEnvio = fechaEnvio;
-        this.codigoUsuarioDestino = codigoUsuarioDestino;
-        this.nombreUsuarioDestino = nombreUsuarioDestino;
-        this.usuario = usuario;
-        this.leido = false;
-    }
 }

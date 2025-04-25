@@ -39,13 +39,12 @@ public class Estudiante extends Persona{
 
     private int semestre;
 
-    //  Agregando la relación con calificacion
-    @OneToMany(mappedBy = "estudiante", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "codigoEstudiante", fetch = FetchType.LAZY)
     @JsonManagedReference
     private List<Calificacion> calificaciones;
 
     // Agregando la relacion con HistorialAcademico
-    @OneToMany(mappedBy = "codigo_estudiante")
+    @OneToMany(mappedBy = "codigoEstudiante")
     @JsonManagedReference
     private List<HistorialAcademico> historialAcademico;
 

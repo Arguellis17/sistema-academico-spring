@@ -19,7 +19,7 @@ public class Docente extends Persona{
     private Long codigoDocente;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "codigoDepartamento",nullable = false)
+    @JoinColumn(name = "codigo_departamento", nullable = false)
     private Departamento codigoDepartamento;
 
 

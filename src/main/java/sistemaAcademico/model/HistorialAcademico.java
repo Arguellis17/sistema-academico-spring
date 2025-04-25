@@ -23,8 +23,7 @@ public class HistorialAcademico {
     @JoinColumn(name = "codigo_estudiante", nullable = false)
     private Estudiante codigoEstudiante;
 
-    // Agregando la relación con CursoHistorial
-    @OneToMany(mappedBy = "historial_academico")
+    @OneToMany(mappedBy = "historialAcademico")
     private List<CursoHistorial> cursoHistorial;
 
 }

@@ -15,7 +15,7 @@ public class Evaluacion {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long codigoEvaluacion;
+    private Long codigo_evaluacion;
     private String tipo;
     private float ponderacion;
 
@@ -26,6 +26,6 @@ public class Evaluacion {
     private Date fechaEvaluacion;
 
     // Agregando la relacion con Calificacion
-    @OneToMany(mappedBy = "evaluacion")
+    @OneToMany(mappedBy = "codigo_evaluacion")
     private List<Calificacion> calificaciones;
 }

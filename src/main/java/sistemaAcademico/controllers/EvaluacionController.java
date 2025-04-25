@@ -46,7 +46,7 @@ public class EvaluacionController {
      */
     @PutMapping("/{codigoEvaluacion}")
     public Evaluacion updateEvaluacion(@PathVariable Long codigoEvaluacion, @RequestBody Evaluacion evaluacion) throws Exception {
-        evaluacion.setCodigoEvaluacion(codigoEvaluacion);
+        evaluacion.setCodigo_evaluacion(codigoEvaluacion);
         return evaluacionService.update(evaluacion);
     }
 
