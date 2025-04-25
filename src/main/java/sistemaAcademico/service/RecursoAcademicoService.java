@@ -19,4 +19,19 @@ public interface RecursoAcademicoService extends CrudService<RecursoAcademico, L
     public List<RecursoAcademico> findByUbicacion(String ubicacion);
 
     public List<RecursoAcademico> findByTipoEspacio(String tipoEspacio);
+
+    // Método para agregar un recurso
+    public RecursoAcademico agregarRecurso(RecursoAcademico recurso);
+
+    // Método para eliminar un recurso
+    public void eliminarRecurso(Long idRecurso) throws Exception;
+
+    // Método para reservar un recurso
+    public void reservarRecurso(Long idRecurso) throws Exception;
+
+    // Método para verificar la disponibilidad de un recurso
+    public boolean verificarDisponibilidad(Long idRecurso);
+
+    // Método para gestionar mantenimiento de un recurso
+    public void gestionarMantenimiento(Long idRecurso) throws Exception;
 }

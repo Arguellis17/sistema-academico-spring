@@ -36,6 +36,7 @@ public class RecursoAcademicoServiceImpl implements RecursoAcademicoService {
     public void deleteById(Long id) {
         recursoAcademicoRepository.deleteById(id);
     }
+
     @Override
     public void deleteAll() throws Exception {
         recursoAcademicoRepository.deleteAll();
@@ -77,5 +78,51 @@ public class RecursoAcademicoServiceImpl implements RecursoAcademicoService {
             throw new Exception("Recurso no encontrado para actualizar");
         }
         return recursoAcademicoRepository.save(recurso);
+    }
+
+    // Nuevo método: agregarRecurso
+    @Override
+    public RecursoAcademico agregarRecurso(RecursoAcademico recurso) {
+        return recursoAcademicoRepository.save(recurso);
+    }
+
+    // Nuevo método: eliminarRecurso
+    @Override
+    public void eliminarRecurso(Long idRecurso) throws Exception {
+        if (!recursoAcademicoRepository.existsById(idRecurso)) {
+            throw new Exception("Recurso no encontrado para eliminar");
+        }
+        recursoAcademicoRepository.deleteById(idRecurso);
+    }
+
+    // Nuevo método: reservarRecurso
+    @Override
+    public void reservarRecurso(Long idRecurso) throws Exception {
+        RecursoAcademico recurso = recursoAcademicoRepository.findById(idRecurso)
+                .orElseThrow(() -> new Exception("Recurso no encontrado"));
+
+        if (!recurso.isDisponible()) {
+            throw new Exception("El recurso no está disponible para reservar");
+        }
+
+        recurso.setDisponible(false); // Marcar como no disponible
+        recursoAcademicoRepository.save(recurso);
+    }
+
+    // Nuevo método: verificarDisponibilidad
+    @Override
+    public boolean verificarDisponibilidad(Long idRecurso) {
+        Optional<RecursoAcademico> recurso = recursoAcademicoRepository.findById(idRecurso);
+        return recurso.map(RecursoAcademico::isDisponible).orElse(false);
+    }
+
+    // Nuevo método: gestionarMantenimiento
+    @Override
+    public void gestionarMantenimiento(Long idRecurso) throws Exception {
+        RecursoAcademico recurso = recursoAcademicoRepository.findById(idRecurso)
+                .orElseThrow(() -> new Exception("Recurso no encontrado"));
+
+        recurso.setDisponible(false); // Marcar como no disponible para mantenimiento
+        recursoAcademicoRepository.save(recurso);
     }
 }
