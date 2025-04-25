@@ -35,6 +35,4 @@ public class Docente extends Persona{
     @OneToMany(mappedBy = "codigoDocente")
     private List<Curso> cursos;
 
-
-
 }

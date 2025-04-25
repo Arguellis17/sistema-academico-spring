@@ -10,10 +10,11 @@ import java.util.List;
 @Repository
 public interface ForoRepository extends JpaRepository<Foro, Long> {
 
-    //public List<Foro> findByTitulo(String titulo);
 
-    //public List<Foro> findByDescripcion(String descripcion);
+    List<Foro> findByTituloContainingIgnoreCase(String titulo);
 
-    //public List<Foro> findByfechaCreacion(Date fechaCreacion);
+    List<Foro> findByDescripcionContainingIgnoreCase(String descripcion);
+
+    List<Foro> findByFechaCreacion(Date fechaCreacion);
 
 }

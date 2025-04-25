@@ -47,6 +47,23 @@ public class ChatServiceImpl implements ChatService {
         chatRepository.deleteAll();
     }
 
+    @Override
+    public Chat crearChat(Chat chat) {
+        Optional<Chat> existente = obtenerChatEntreUsuarios(chat.getCodigoUsuario1(), chat.getCodigoUsuario2());
+
+        if (existente.isPresent()) {
+            return existente.get(); // Si ya existe un chat entre ellos, lo retornamos
+        }
+
+        chat.setFechaCreacion(new Date());
+        return chatRepository.save(chat);
+    }
+
+    @Override
+    public List<Chat> obtenerChatsPorUsuario(Long usuarioId) {
+        return chatRepository.findByCodigoUsuario1IdOrCodigoUsuario2Id(usuarioId, usuarioId);
+    }
+
     // ================= MÉTODOS PERSONALIZADOS =================
 
     @Override
