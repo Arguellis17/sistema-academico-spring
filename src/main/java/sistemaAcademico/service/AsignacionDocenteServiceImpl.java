@@ -3,6 +3,9 @@ package sistemaAcademico.service;
 import lombok.RequiredArgsConstructor;
 import org.jvnet.hk2.annotations.Service;
 import sistemaAcademico.model.AsignacionDocente;
+import sistemaAcademico.model.Curso;
+import sistemaAcademico.model.Docente;
+import sistemaAcademico.model.Horario;
 import sistemaAcademico.repository.AsignacionDocenteRepository;
 import java.util.Date;
 import java.util.List;
@@ -52,6 +55,29 @@ public class AsignacionDocenteServiceImpl implements AsignacionDocenteService {
     @Override
     public List<AsignacionDocente> findByCargaHoraria(int cargaHoraria) {
         return repository.findByCargaHoraria(cargaHoraria);
+    }
+    @Override
+    public void asignarCurso(Docente docente, Curso curso) {
+        if (verificarDisponibilidad(docente, curso.getHorario())) {
+            docente.asignarCurso(curso);
+            ajustarCargaHoraria(docente.getCargaHoraria() + curso.getHoras());
+        } else {
+            throw new DisponibilidadException("El docente no está disponible en el horario del curso.");
+        }
+    }
+
+    @Override
+    public boolean verificarDisponibilidad(Docente docente, Horario horario) {
+        return docente.getHorariosDisponibles().contains(horario) && docente.getCargaHoraria() < docente.getMaxHoras();
+    }
+
+    @Override
+    public void ajustarCargaHoraria(Docente docente, int nuevaCarga) {
+        if (nuevaCarga <= docente.getMaxHoras()) {
+            docente.setCargaHoraria(nuevaCarga);
+        } else {
+            throw new CargaExcesivaException("La nueva carga excede el límite permitido.");
+        }
     }
 }
 
