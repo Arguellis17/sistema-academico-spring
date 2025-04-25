@@ -64,7 +64,7 @@ public class ProgramaController {
         programaService.deleteAll();
     }
 
-    /*
+
     @GetMapping("/buscar/nombre")
     public List<Programa> getProgramasByNombre(@RequestParam String nombre) throws Exception {
         return programaService.findByNombre(nombre);
@@ -74,5 +74,5 @@ public class ProgramaController {
     public List<Programa> getProgramasByDescripcion(@RequestParam String descripcion) throws Exception {
         return programaService.findByDescripcion(descripcion);
     }
-    */
+
 }

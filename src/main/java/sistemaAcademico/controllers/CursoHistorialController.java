@@ -67,10 +67,10 @@ public class CursoHistorialController {
     /*
      * Métodos de búsqueda adicionales (si decides implementarlos luego)
      */
-    /*
+
     @GetMapping("/buscar/calificacion")
     public List<CursoHistorial> getByCalificacionFinal(@RequestParam float calificacionFinal) throws Exception {
         return cursoHistorialService.findByCalificacionFinal(calificacionFinal);
     }
-    */
+
 }

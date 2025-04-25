@@ -1,8 +1,10 @@
 package sistemaAcademico.controllers;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import sistemaAcademico.model.Horario;
+import sistemaAcademico.model.Curso;
 import sistemaAcademico.service.HorarioService;
 
 import java.util.Date;
@@ -28,33 +30,40 @@ public class HorarioController {
      * Obtiene un horario por su ID
      */
     @GetMapping("/{codigoHorario}")
-    public Optional<Horario> getHorarioById(@PathVariable Long codigoHorario) throws Exception {
-        return horarioService.findById(codigoHorario);
+    public ResponseEntity<Horario> getHorarioById(@PathVariable Long codigoHorario) throws Exception {
+        Optional<Horario> horario = horarioService.findById(codigoHorario);
+        return horario.map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     /**
      * Crea un nuevo horario
      */
     @PostMapping
-    public Horario createHorario(@RequestBody Horario horario) throws Exception {
-        return horarioService.save(horario);
+    public ResponseEntity<Horario> createHorario(@RequestBody Horario horario) throws Exception {
+        return ResponseEntity.ok(horarioService.save(horario));
     }
 
     /**
      * Actualiza un horario existente
      */
     @PutMapping("/{codigoHorario}")
-    public Horario updateHorario(@PathVariable Long codigoHorario, @RequestBody Horario horario) throws Exception {
+    public ResponseEntity<Horario> updateHorario(@PathVariable Long codigoHorario, @RequestBody Horario horario) throws Exception {
         horario.setCodigoHorario(codigoHorario);
-        return horarioService.update(horario);
+        Horario updatedHorario = horarioService.update(horario);
+        return ResponseEntity.ok(updatedHorario);
     }
 
     /**
      * Elimina un horario por ID
      */
     @DeleteMapping("/{codigoHorario}")
-    public void deleteHorario(@PathVariable Long codigoHorario) throws Exception {
-        horarioService.deleteById(codigoHorario);
+    public ResponseEntity<Void> deleteHorario(@PathVariable Long codigoHorario) throws Exception {
+        if (horarioService.findById(codigoHorario).isPresent()) {
+            horarioService.deleteById(codigoHorario);
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.notFound().build();
     }
 
     /**
@@ -65,30 +74,47 @@ public class HorarioController {
         horarioService.deleteAll();
     }
 
-    /*
-     * Métodos personalizados (descomentar si implementas en service y repository)
+    /**
+     * Modifica un horario existente con una nueva hora de inicio y fin
      */
-    /*
-    @GetMapping("/buscar/curso")
-    public List<Horario> getHorariosByCurso(@RequestParam Long codigoCurso) throws Exception {
-        Curso curso = new Curso();
-        curso.setCodigoCurso(codigoCurso);
-        return horarioService.findByCodigoCurso(curso);
+    @PutMapping("/{codigoHorario}/modificar")
+    public ResponseEntity<Horario> modificarHorario(@PathVariable Long codigoHorario,
+                                                    @RequestParam Date nuevaHoraInicio,
+                                                    @RequestParam Date nuevaHoraFin) throws Exception {
+        Horario horarioModificado = horarioService.modificarHorario(codigoHorario, nuevaHoraInicio, nuevaHoraFin);
+        return ResponseEntity.ok(horarioModificado);
     }
 
-    @GetMapping("/buscar/hora-inicio")
-    public List<Horario> getHorariosByHoraInicio(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) Date horaInicio) throws Exception {
-        return horarioService.findByHoraInicio(horaInicio);
+    /**
+     * Asigna un nuevo horario a un curso
+     */
+    @PostMapping("/asignar")
+    public ResponseEntity<Horario> asignarHorario(@RequestBody Curso curso,
+                                                  @RequestParam Date horaInicio,
+                                                  @RequestParam Date horaFin,
+                                                  @RequestParam String tipoSesion) throws Exception {
+        Horario nuevoHorario = horarioService.asignarHorario(curso, horaInicio, horaFin, tipoSesion);
+        return ResponseEntity.ok(nuevoHorario);
     }
 
-    @GetMapping("/buscar/hora-fin")
-    public List<Horario> getHorariosByHoraFin(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) Date horaFin) throws Exception {
-        return horarioService.findByHoraFin(horaFin);
+    /**
+     * Verifica si hay disponibilidad de horario para un curso específico
+     */
+    @GetMapping("/verificarDisponibilidad")
+    public ResponseEntity<Boolean> verificarDisponibilidad(@RequestParam Curso curso,
+                                                           @RequestParam Date horaInicio,
+                                                           @RequestParam Date horaFin) {
+        boolean disponible = horarioService.verificarDisponibilidad(curso, horaInicio, horaFin);
+        return ResponseEntity.ok(disponible);
     }
 
-    @GetMapping("/buscar/tipo-sesion")
-    public List<Horario> getHorariosByTipoSesion(@RequestParam String tipoSesion) throws Exception {
-        return horarioService.findByTipoSesion(tipoSesion);
+    /**
+     * Optimiza el uso de recursos (detectando huecos entre sesiones de los cursos)
+     */
+    @GetMapping("/optimizar")
+    public ResponseEntity<List<String>> optimizarRecursos() {
+        List<String> recomendaciones = horarioService.optimizarUsoRecursos();
+        return ResponseEntity.ok(recomendaciones);
     }
-    */
+
 }

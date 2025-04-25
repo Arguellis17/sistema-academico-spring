@@ -1,0 +1,24 @@
+package sistemaAcademico.model;
+
+import jakarta.persistence.*;
+import lombok.*;
+import java.time.LocalDateTime;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+public class ReservaEspacio {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "codigo_espacio", nullable = false)
+    private Espacio espacio;
+
+    private String reservadoPor;
+    private LocalDateTime fechaInicio;
+    private LocalDateTime fechaFin;
+    private String motivo;
+}

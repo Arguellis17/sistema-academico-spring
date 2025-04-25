@@ -11,12 +11,12 @@ import java.util.List;
 @Repository
 public interface HorarioRepository extends JpaRepository<Horario, Long> {
 
-    //public List<Horario> findByCodigoCurso(Curso codigoCurso);
+    public List<Horario> findByCodigoCurso(Curso codigoCurso);
 
-    //public List<Horario> findByHoraInicio(Date horaInicio);
+    public List<Horario> findByHoraInicio(Date horaInicio);
 
-    //public List<Horario> findByHoraFin(Date horaFin);
+    public List<Horario> findByHoraFin(Date horaFin);
 
-    //public List<Horario> findByTipoSesion(String tipoSesion);
+    public List<Horario> findByTipoSesion(String tipoSesion);
 
 }

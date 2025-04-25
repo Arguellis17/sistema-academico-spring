@@ -10,25 +10,28 @@ import java.util.List;
 @Service
 public interface CursoService extends CrudService<Curso, Long>{
 
+    List<Curso> findByCodigoCarreraId(Long codigoCarrera);
     List<Curso> findByCodigoSemestreId(Long codigoSemestre);
-
     List<Curso> findByCodigoDocenteId(Long codigoDocente);
 
     void inscribirEstudiante(Long codigoEstudiante, Estudiante estudiante);
 
-    void agregarPrerrequisito(Curso prerrequisito);
+    void agregarPrerrequisito(Long idCurso, Curso prerrequisito);
 
-    boolean validarPrerrequisitos(Long codigoEstudiante);
+    boolean validarPrerrequisitos(Long codigoEstudiante, Long idCursoDestino);
 
-    void agregarCurso();
+    void agregarCurso(Curso curso);
 
-    void eliminarCurso();
+    void eliminarCurso(Long idCurso);
 
-    boolean validarCupos();
+    boolean validarCupos(Long idCurso);
 
     Horario generarHorario();
 
     boolean verificarDisponibilidad();
+
+
+
 
 
 

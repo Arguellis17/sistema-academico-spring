@@ -36,7 +36,7 @@ public class Curso {
     @ManyToMany
     @JoinTable(
             name = "curso_carrera", // Nombre de la tabla intermedia
-            joinColumns = @JoinColumn(name="codigo_curso"), // Clave foranea hacia curso
+            joinColumns = @JoinColumn(name="codigoCurso"), // Clave foranea hacia curso
             inverseJoinColumns = @JoinColumn(name="codigo_carrera") // Clave foranea hacia carrera
     )
     private List<Carrera> codigoCarrera;
@@ -48,12 +48,13 @@ public class Curso {
             inverseJoinColumns = @JoinColumn(name = "prerequisito_id")
     )
     private List<Curso> prerequisitos;
-
+    @OneToMany(mappedBy = "codigoCurso")
+    private List<RecursoAcademico> recursosAcademicos;
     @ManyToMany
-    @JoinTable (
+    @JoinTable(
             name = "curso_programa", // Nombre de la tabla intermedia
-            joinColumns = @JoinColumn(name="codigo_curso"), // Clave foranea hacia curso
-            inverseJoinColumns = @JoinColumn(name="codigo_programa") // Clave foranea hacia programa
+            joinColumns = @JoinColumn(name = "codigo_curso"), // Clave foránea hacia Curso
+            inverseJoinColumns = @JoinColumn(name = "codigo_programa") // Clave foránea hacia Programa
     )
     private List<Programa> codigoPrograma;
 
@@ -77,7 +78,7 @@ public class Curso {
     private List<CursoHistorial> cursoHistorial;
 
     // Agregando la relacion con Evaluacion
-    @OneToOne(mappedBy = "codigo_curso")
+    @OneToOne(mappedBy = "codigoCurso")
     private Evaluacion evaluacion;
 
     // Agregando la relacion con Foro
@@ -85,7 +86,7 @@ public class Curso {
     private List<Foro> foros;
 
     // Agregando la relacion con Horario
-    @OneToMany(mappedBy = "codigo_curso")
+    @OneToMany(mappedBy = "codigoCurso")
     private List<Horario> horarios;
 
     @ManyToOne
@@ -95,6 +96,7 @@ public class Curso {
         return codigoPrerrequisito;
     }
 
+<<<<<<< HEAD
     public void setCodigoPrerrequisito(Curso codigoPrerrequisito) {
         this.codigoPrerrequisito = codigoPrerrequisito;
     }
@@ -126,6 +128,11 @@ public class Curso {
         }
         return cursosAprobados;
     }
+=======
+    // Nuevos campos
+    private int cupoMaximo;   // Límite de cupos
+    private int cupoActual;
+>>>>>>> 2c256cef2010f85f4e1b4e0a4d5a308ca6ec3047
 
 
 }

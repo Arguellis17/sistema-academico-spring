@@ -64,10 +64,9 @@ public class FacultadController {
         facultadService.deleteAll();
     }
 
-    /*
     @GetMapping("/buscar/nombre")
     public List<Facultad> getFacultadesByNombre(@RequestParam String nombre) throws Exception {
         return facultadService.findByNombre(nombre);
     }
-    */
+
 }

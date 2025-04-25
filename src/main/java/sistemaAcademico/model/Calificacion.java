@@ -15,12 +15,12 @@ public class Calificacion {
     private Long codigoCalificacion;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "codigo_estudiante",nullable = false)
+    @JoinColumn(name = "codigoEstudiante",nullable = false)
     private Estudiante codigoEstudiante;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "codigo_evaluacion",nullable = false)
-    private Evaluacion codigoEvaluacion;
+    private Evaluacion codigo_evaluacion;
 
     private float nota;
 

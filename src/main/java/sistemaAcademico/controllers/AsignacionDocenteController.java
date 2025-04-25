@@ -17,43 +17,83 @@ public class AsignacionDocenteController {
 
     private final AsignacionDocenteService service;
 
+    /**
+     * Obtiene todas las asignaciones de docentes.
+     */
     @GetMapping
-    public ResponseEntity<List<AsignacionDocente>> findAll() throws Exception {
-        return ResponseEntity.ok(service.findAll());
+    public ResponseEntity<List<AsignacionDocente>> findAll() {
+        try {
+            List<AsignacionDocente> asignaciones = service.findAll();
+            return ResponseEntity.ok(asignaciones);
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body(null); // Error interno del servidor
+        }
     }
 
+    /**
+     * Obtiene una asignación de docente por su ID.
+     */
     @GetMapping("/{id}")
-    public ResponseEntity<AsignacionDocente> findById(@PathVariable Long id) throws Exception {
+    public ResponseEntity<AsignacionDocente> findById(@PathVariable Long id) {
         Optional<AsignacionDocente> result = service.findById(id);
         return result.map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.notFound().build());
+                .orElseGet(() -> ResponseEntity.notFound().build()); // Devuelve 404 si no se encuentra
     }
 
+    /**
+     * Crea una nueva asignación de docente.
+     */
     @PostMapping
-    public ResponseEntity<AsignacionDocente> save(@RequestBody AsignacionDocente asignacionDocente) throws Exception {
-        return ResponseEntity.ok(service.save(asignacionDocente));
+    public ResponseEntity<AsignacionDocente> save(@RequestBody AsignacionDocente asignacionDocente) {
+        try {
+            AsignacionDocente created = service.save(asignacionDocente);
+            return ResponseEntity.status(201).body(created); // Devuelve 201 cuando se crea exitosamente
+        } catch (Exception e) {
+            return ResponseEntity.status(400).body(null); // Si ocurre un error con la creación
+        }
     }
 
+    /**
+     * Actualiza una asignación de docente existente.
+     */
     @PutMapping("/{id}")
-    public ResponseEntity<AsignacionDocente> update(@PathVariable Long id,
-                                                    @RequestBody AsignacionDocente asignacionDocente) throws Exception {
-        asignacionDocente.setCodigoAsignacionDocente(id);
-        return ResponseEntity.ok(service.update(asignacionDocente));
+    public ResponseEntity<AsignacionDocente> update(@PathVariable Long id, @RequestBody AsignacionDocente asignacionDocente) {
+        Optional<AsignacionDocente> existing = service.findById(id);
+        if (existing.isPresent()) {
+            asignacionDocente.setCodigoAsignacionDocente(id); // Aseguramos que el ID sea el correcto
+            return ResponseEntity.ok(service.update(asignacionDocente)); // Devuelve la asignación actualizada
+        }
+        return ResponseEntity.notFound().build(); // Si no se encuentra el ID, devolvemos 404
     }
 
+    /**
+     * Elimina una asignación de docente por su ID.
+     */
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long id) throws Exception {
-        service.deleteById(id);
-        return ResponseEntity.noContent().build();
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        Optional<AsignacionDocente> existing = service.findById(id);
+        if (existing.isPresent()) {
+            service.deleteById(id);
+            return ResponseEntity.noContent().build(); // Devuelve 204 si se elimina correctamente
+        }
+        return ResponseEntity.notFound().build(); // Si no se encuentra el ID, devolvemos 404
     }
 
+    /**
+     * Filtra asignaciones de docentes por fecha.
+     */
     @GetMapping("/fecha")
     public ResponseEntity<List<AsignacionDocente>> findByFecha(@RequestParam Date fecha) {
-        return ResponseEntity.ok(service.findByFecha(fecha));
+        List<AsignacionDocente> result = service.findByFecha(fecha);
+        return result.isEmpty() ? ResponseEntity.noContent().build() : ResponseEntity.ok(result); // 204 si está vacío
     }
 
+    /**
+     * Filtra asignaciones de docentes por carga horaria.
+     */
     @GetMapping("/carga-horaria/{cargaHoraria}")
     public ResponseEntity<List<AsignacionDocente>> findByCargaHoraria(@PathVariable int cargaHoraria) {
-        return ResponseEntity.ok(service.findByCargaHoraria(cargaHoraria));
+        List<AsignacionDocente> result = service.findByCargaHoraria(cargaHoraria);
+        return result.isEmpty() ? ResponseEntity.noContent().build() : ResponseEntity.ok(result); // 204 si está vacío
     }
 }

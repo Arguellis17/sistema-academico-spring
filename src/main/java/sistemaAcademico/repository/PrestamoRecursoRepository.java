@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public interface PrestamoRecursoRepository extends JpaRepository<PrestamoRecurso, Long> {
 
-    //public List<PrestamoRecurso> findByFechaPrestamo(Date fechaPrestamo);
+    public List<PrestamoRecurso> findByFechaPrestamo(Date fechaPrestamo);
 
-    //public List<PrestamoRecurso> findByFechaDevolucion(Date fechaDevolucion);
+    public List<PrestamoRecurso> findByFechaDevolucion(Date fechaDevolucion);
 }

@@ -40,13 +40,19 @@ public class Estudiante extends Persona{
 
     private int semestre;
 
-    //  Agregando la relación con calificacion
-    @OneToMany(mappedBy = "estudiante", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "codigoEstudiante", fetch = FetchType.LAZY)
     @JsonManagedReference
     private List<Calificacion> calificaciones;
 
+<<<<<<< HEAD
     @OneToOne(mappedBy = "codigoEstudiante", cascade = CascadeType.ALL)
     private HistorialAcademico historialAcademico;
+=======
+    // Agregando la relacion con HistorialAcademico
+    @OneToMany(mappedBy = "codigoEstudiante")
+    @JsonManagedReference
+    private List<HistorialAcademico> historialAcademico;
+>>>>>>> 2c256cef2010f85f4e1b4e0a4d5a308ca6ec3047
 
     // Agregando la relación con Matricula
     @OneToOne(mappedBy = "estudiante", fetch = FetchType.LAZY)
