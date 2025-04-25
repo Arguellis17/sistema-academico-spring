@@ -29,15 +29,22 @@ public class ReservaEspacioController {
     }
 
     @PostMapping
-    public ReservaEspacio save(@RequestBody ReservaEspacio reserva) throws Exception {
-        return reservaEspacioService.save(reserva);
+    public ResponseEntity<ReservaEspacio> save(@RequestBody ReservaEspacio reserva) throws Exception {
+        // Verificar si existe traslape en el horario antes de guardar
+        if (reservaEspacioService.existeTraslape(reserva.getEspacio().getCodigoEspacio(), reserva.getFechaInicio(), reserva.getFechaFin())) {
+            return ResponseEntity.status(400).build(); // Hay un traslape
+        }
+        return ResponseEntity.ok(reservaEspacioService.save(reserva));
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<ReservaEspacio> update(@PathVariable Long id, @RequestBody ReservaEspacio nuevaReserva) throws Exception {
         Optional<ReservaEspacio> existente = reservaEspacioService.findById(id);
         if (existente.isPresent()) {
-            nuevaReserva.setId(id); // Ajusta según el nombre exacto de tu campo ID
+            nuevaReserva.setId(id); // Se utiliza el setter generado por Lombok con @Data
+            if (reservaEspacioService.existeTraslape(nuevaReserva.getEspacio().getCodigoEspacio(), nuevaReserva.getFechaInicio(), nuevaReserva.getFechaFin())) {
+                return ResponseEntity.status(400).build(); // Error: traslape detectado
+            }
             return ResponseEntity.ok(reservaEspacioService.update(nuevaReserva));
         }
         return ResponseEntity.notFound().build();
@@ -54,7 +61,7 @@ public class ReservaEspacioController {
 
     @GetMapping("/espacio/{espacioId}")
     public List<ReservaEspacio> findByEspacioId(@PathVariable Long espacioId) {
-        return reservaEspacioService.findByEspacioId(espacioId);
+        return reservaEspacioService.findByEspacioCodigoEspacio(espacioId);
     }
 
     @GetMapping("/traslape")
