@@ -4,6 +4,9 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import sistemaAcademico.model.Notificacion;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
 @Service
 public interface NotificacionService extends CrudService<Notificacion, Long> {
     void enviarNotificacion();
@@ -13,11 +16,13 @@ public interface NotificacionService extends CrudService<Notificacion, Long> {
     @Scheduled(fixedRate = 86400000) // Cada 24 horas
     void programarNotificacionAutomatica();
 
-    //public List<Notificacion> findByMensaje(String mensaje);
+    List<Notificacion> findByMensaje(String mensaje);
 
-    //public List<Notificacion> findByFechaEnvio(Date fechaEnvio);
+    List<Notificacion> findByFechaEnvio(LocalDateTime desde, LocalDateTime hasta);
 
-    //public List<Notificacion> findByTipo(String tipo);
+    List<Notificacion> findByTipo(String tipo);
 
-    //public List<Notificacion> findByEstado(String estado);
+    List<Notificacion> findByLeido(boolean leido);
+
+    List<Notificacion> findByUsuarioDestino(Long codigoUsuarioDestino);
 }

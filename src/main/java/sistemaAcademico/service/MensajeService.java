@@ -13,7 +13,7 @@ public interface MensajeService extends CrudService<Mensaje, Long> {
 
     //public List<Mensaje> findByFechaEnvio(Date fechaEnvio);
 
-    void enviarMensaje(Mensaje mensaje) throws Exception;
+    Mensaje enviarMensaje(Mensaje mensaje) throws Exception;
 
     List<Mensaje> recibirMensajes(Long idReceptor) throws Exception;
 
@@ -24,5 +24,9 @@ public interface MensajeService extends CrudService<Mensaje, Long> {
     List<Mensaje> findByChatId(Long chatId) throws Exception;
 
     List<Mensaje> findByEmisorId(Long emisorId) throws Exception;
+
+    List<Mensaje> obtenerMensajesPorChat(Long chatId) throws Exception;
+
+    void eliminarMensaje(Long mensajeId) throws Exception;
 
 }

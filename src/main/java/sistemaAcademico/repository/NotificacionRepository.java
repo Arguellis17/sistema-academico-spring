@@ -4,17 +4,20 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import sistemaAcademico.model.Notificacion;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
 @Repository
 public interface NotificacionRepository extends JpaRepository<Notificacion, Long> {
 
-    //public List<Notificacion> findByMensaje(String mensaje);
+    List<Notificacion> findByMensajeContainingIgnoreCase(String mensaje);
 
-    //public List<Notificacion> findByFechaEnvio(Date fechaEnvio);
+    List<Notificacion> findByFechaEnvioBetween(LocalDateTime desde, LocalDateTime hasta);
 
-    //public List<Notificacion> findByTipo(String tipo);
+    List<Notificacion> findByTipo(String tipo);
 
-    //public List<Notificacion> findByEstado(String estado);
+    List<Notificacion> findByLeido(boolean leido);
+
+    List<Notificacion> findByCodigoUsuarioDestino(Long codigoUsuarioDestino);
 }

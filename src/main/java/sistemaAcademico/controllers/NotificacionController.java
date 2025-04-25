@@ -1,10 +1,13 @@
 package sistemaAcademico.controllers;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 import sistemaAcademico.model.Notificacion;
+import sistemaAcademico.service.NotificacionEmailService;
 import sistemaAcademico.service.NotificacionService;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,75 +17,91 @@ import java.util.Optional;
 public class NotificacionController {
 
     private final NotificacionService notificacionService;
+    private final NotificacionEmailService notificacionEmailService;
 
-    /**
-     * Obtiene la lista de todas las notificaciones
-     */
+    // ------------------ CRUD BÁSICO ------------------
+
     @GetMapping
     public List<Notificacion> getAllNotificaciones() throws Exception {
         return notificacionService.findAll();
     }
 
-    /**
-     * Obtiene una notificación por su ID
-     */
     @GetMapping("/{codigoNotificacion}")
     public Optional<Notificacion> getNotificacionById(@PathVariable Long codigoNotificacion) throws Exception {
         return notificacionService.findById(codigoNotificacion);
     }
 
-    /**
-     * Crea una nueva notificación
-     */
-    @PostMapping
-    public Notificacion createNotificacion(@RequestBody Notificacion notificacion) throws Exception {
-        return notificacionService.save(notificacion);
-    }
-
-    /**
-     * Actualiza una notificación existente
-     */
     @PutMapping("/{codigoNotificacion}")
-    public Notificacion updateNotificacion(@PathVariable Long codigoNotificacion, @RequestBody Notificacion notificacion) throws Exception {
+    public Notificacion updateNotificacion(@PathVariable Long codigoNotificacion,
+                                           @RequestBody Notificacion notificacion) throws Exception {
         notificacion.setCodigoNotificacion(codigoNotificacion);
         return notificacionService.update(notificacion);
     }
 
-    /**
-     * Elimina una notificación por ID
-     */
     @DeleteMapping("/{codigoNotificacion}")
     public void deleteNotificacion(@PathVariable Long codigoNotificacion) throws Exception {
         notificacionService.deleteById(codigoNotificacion);
     }
 
-    /**
-     * Elimina todas las notificaciones
-     */
     @DeleteMapping
     public void deleteAllNotificaciones() throws Exception {
         notificacionService.deleteAll();
     }
 
-    /*
+    // ------------------ CONSULTAS AVANZADAS ------------------
+
     @GetMapping("/buscar/mensaje")
-    public List<Notificacion> getNotificacionesByMensaje(@RequestParam String mensaje) throws Exception {
+    public List<Notificacion> getByMensaje(@RequestParam String mensaje) throws Exception {
         return notificacionService.findByMensaje(mensaje);
     }
 
     @GetMapping("/buscar/fecha")
-    public List<Notificacion> getNotificacionesByFechaEnvio(@RequestParam Date fechaEnvio) throws Exception {
-        return notificacionService.findByFechaEnvio(fechaEnvio);
+    public List<Notificacion> getByFecha(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime desde,
+                                         @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime hasta) throws Exception {
+        return notificacionService.findByFechaEnvio(desde, hasta);
     }
 
     @GetMapping("/buscar/tipo")
-    public List<Notificacion> getNotificacionesByTipo(@RequestParam String tipo) throws Exception {
+    public List<Notificacion> getByTipo(@RequestParam String tipo) throws Exception {
         return notificacionService.findByTipo(tipo);
     }
 
-    @GetMapping("/buscar/estado")
-    public List<Notificacion> getNotificacionesByEstado(@RequestParam String estado) throws Exception {
-        return notificacionService.findByEstado(estado);
+    @GetMapping("/buscar/leido")
+    public List<Notificacion> getByEstadoLectura(@RequestParam boolean leido) throws Exception {
+        return notificacionService.findByLeido(leido);
     }
-    */
+
+    @GetMapping("/usuario/{codigoUsuario}")
+    public List<Notificacion> getByUsuarioDestino(@PathVariable Long codigoUsuario) throws Exception {
+        return notificacionService.findByUsuarioDestino(codigoUsuario);
+    }
+
+    // ------------------ MARCAR COMO LEÍDO (opcional extra) ------------------
+
+    @PatchMapping("/{codigoNotificacion}/leer")
+    public Notificacion marcarComoLeido(@PathVariable Long codigoNotificacion) throws Exception {
+        Optional<Notificacion> optional = notificacionService.findById(codigoNotificacion);
+        if (optional.isPresent()) {
+            Notificacion notificacion = optional.get();
+            notificacion.setLeido(true);
+            notificacion.setFechaLectura(LocalDateTime.now());
+            return notificacionService.update(notificacion);
+        } else {
+            throw new Exception("Notificación no encontrada");
+        }
+    }
+
+    @PostMapping
+    public Notificacion createNotificacion(@RequestBody Notificacion notificacion) throws Exception {
+        Notificacion nuevaNotificacion = notificacionService.save(notificacion);
+
+        // Envío automático de notificación por correo
+        notificacionEmailService.enviarNotificacion(
+                notificacion.getNombreUsuarioDestino(), // o correoDestino si ya lo tienes
+                "Nueva Notificación",
+                notificacion.getMensaje()
+        );
+
+        return nuevaNotificacion;
+    }
 }

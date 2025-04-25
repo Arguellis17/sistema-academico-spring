@@ -49,10 +49,20 @@ public class MensajeServiceImpl implements MensajeService{
         mensajeRepository.deleteAll();
     }
 
+    @Override
+    public List<Mensaje> obtenerMensajesPorChat(Long chatId) throws Exception {
+        return mensajeRepository.findByChatCodigoChat(chatId);
+    }
+
+    @Override
+    public void eliminarMensaje(Long mensajeId) throws Exception {
+        mensajeRepository.deleteById(mensajeId);
+    }
+
     // =================== MÉTODOS PERSONALIZADOS ===================
 
     @Override
-    public void enviarMensaje(Mensaje mensaje) throws Exception {
+    public Mensaje enviarMensaje(Mensaje mensaje) throws Exception {
         mensaje.setFechaEnvio(new Date()); // Asignar fecha actual
         mensaje.setLeido(false);           // Inicia como no leído
 
@@ -75,6 +85,7 @@ public class MensajeServiceImpl implements MensajeService{
 
         // Finalmente guarda el mensaje
         mensajeRepository.save(mensaje);
+        return mensaje;
     }
 
     @Override

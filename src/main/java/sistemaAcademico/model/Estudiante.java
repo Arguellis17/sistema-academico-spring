@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /*
@@ -43,14 +44,34 @@ public class Estudiante extends Persona{
     @JsonManagedReference
     private List<Calificacion> calificaciones;
 
+<<<<<<< HEAD
+    @OneToOne(mappedBy = "codigoEstudiante", cascade = CascadeType.ALL)
+    private HistorialAcademico historialAcademico;
+=======
     // Agregando la relacion con HistorialAcademico
     @OneToMany(mappedBy = "codigoEstudiante")
     @JsonManagedReference
     private List<HistorialAcademico> historialAcademico;
+>>>>>>> 2c256cef2010f85f4e1b4e0a4d5a308ca6ec3047
 
     // Agregando la relación con Matricula
     @OneToOne(mappedBy = "estudiante", fetch = FetchType.LAZY)
     @JsonManagedReference
     private Matricula matricula;
+
+
+
+    public List<Curso> generarReporteCursosAprobados() {
+        List<Curso> cursosAprobados = new ArrayList<>();
+        if (historialAcademico != null && historialAcademico.getCursoHistorial() != null) {
+            for (CursoHistorial ch : historialAcademico.getCursoHistorial()) {
+                if (ch.getEstadoCurso() == EstadoCurso.APROBADO) {
+                    cursosAprobados.add(ch.getCurso());
+                }
+            }
+        }
+        return cursosAprobados;
+    }
+
 
 }

@@ -14,31 +14,52 @@ Este trabajo ha sido realizado bajo la guía del profesor **Jonathan Rolando**.
 ---
 
 🧩 Módulos Funcionales
+1. Módulo de Gestión de Estudiantes (Responsable: Sebas)
+Registro y Actualización: Permitir el alta, modificación y eliminación de la información personal y académica de cada estudiante.
 
-### 1. Módulo de Gestión de Estudiantes (Responsable: **Sebas**)
+Matrícula e Inscripción: Gestionar el proceso de matrícula, inscripción a cursos y asignaturas, considerando requisitos y prerrequisitos.
 
-- **Registro y Actualización**: Permitir el alta, modificación y eliminación de la información personal y académica de cada estudiante.
-- **Matrícula e Inscripción**: Gestionar el proceso de matrícula, inscripción a cursos y asignaturas, considerando requisitos y prerrequisitos.
-- **Gestión de Asistencia**: Registrar la asistencia a clases y generar reportes de inasistencias o ausencias justificadas.
-- **Historial Académico**: Visualización del rendimiento académico, cursos aprobados y calificaciones.
+Gestión de Asistencia: Registrar la asistencia a clases y generar reportes de inasistencias o ausencias justificadas.
 
-### 2. Módulo de Gestión de Docentes (Responsable: **Chinchilla**)
+Historial Académico: Visualización del rendimiento académico, cursos aprobados y calificaciones.
 
-- **Registro y Actualización**: Permitir el alta, modificación y eliminación de datos personales y profesionales de los docentes.
-- **Asignación de Cursos**: Asignar cursos o asignaturas a cada docente, considerando disponibilidad y carga horaria.
-- **Gestión de Evaluaciones**: Facilitar la creación, aplicación y registro de evaluaciones, exámenes y otros instrumentos de medición del rendimiento estudiantil.
+2. Módulo de Gestión de Docentes (Responsable: Chinchilla)
+Registro y Actualización: Permitir el alta, modificación y eliminación de datos personales y profesionales de los docentes.
 
-### 3. Módulo de Gestión de Cursos y Asignaturas (Responsable: **Arguello**)
+Asignación de Cursos: Asignar cursos o asignaturas a cada docente, considerando disponibilidad y carga horaria.
 
-- **Creación y Administración**: Permitir el diseño, modificación y eliminación de cursos y asignaturas, definiendo contenidos, objetivos y competencias a desarrollar.
-- **Programación de Horarios**: Establecer y gestionar los horarios de clases, exámenes y tutorías, evitando solapamientos y optimizando el uso de recursos.
-- **Inscripción y Cancelación**: Permitir a los estudiantes inscribirse o cancelar la inscripción en cursos, con validación de cupos y cumplimiento de prerrequisitos.
+Gestión de Evaluaciones: Facilitar la creación, aplicación y registro de evaluaciones, exámenes y otros instrumentos de medición del rendimiento estudiantil.
 
-### 4. Módulo de Evaluación y Calificaciones (Responsable: **Jonathan**)
+3. Módulo de Gestión de Cursos y Asignaturas (Responsable: Arguello)
+Creación y Administración: Permitir el diseño, modificación y eliminación de cursos y asignaturas, definiendo contenidos, objetivos y competencias a desarrollar.
 
-- **Registro de Calificaciones**: Permitir el ingreso, modificación y consulta de calificaciones de evaluaciones, exámenes y trabajos.
-- **Cálculo de Promedios y Estadísticas**: Automatizar el cálculo de promedios, proyecciones de rendimiento y generación de reportes de desempeño.
-- **Retroalimentación**: Facilitar la comunicación de resultados y comentarios entre docentes y estudiantes.
+Programación de Horarios: Establecer y gestionar los horarios de clases, exámenes y tutorías, evitando solapamientos y optimizando el uso de recursos.
+
+Inscripción y Cancelación: Permitir a los estudiantes inscribirse o cancelar la inscripción en cursos, con validación de cupos y cumplimiento de prerrequisitos.
+
+4. Módulo de Evaluación y Calificaciones (Responsable: Jonathan)
+Registro de Calificaciones: Permitir el ingreso, modificación y consulta de calificaciones de evaluaciones, exámenes y trabajos.
+
+Cálculo de Promedios y Estadísticas: Automatizar el cálculo de promedios, proyecciones de rendimiento y generación de reportes de desempeño.
+
+Retroalimentación: Facilitar la comunicación de resultados y comentarios entre docentes y estudiantes.
+
+5. Módulo de Comunicación y Notificaciones (Responsable: Jesus Chinchilla)
+Mensajería Interna: Permitir la comunicación directa entre estudiantes, docentes y personal administrativo mediante un sistema de mensajes internos o foros académicos.
+
+Alertas y Recordatorios: Enviar notificaciones automáticas por correo electrónico, SMS o notificaciones push sobre fechas importantes como exámenes, entregas, reuniones y eventos institucionales.
+
+6. Módulo de Gestión de Recursos Académicos (Responsable: Juan Arguello)
+Reserva de Aulas y Laboratorios: Permitir la asignación y reserva eficiente de espacios físicos o virtuales utilizados para clases, prácticas o evaluaciones.
+
+Gestión de Materiales: Administrar el préstamo, devolución y mantenimiento de recursos educativos como libros, equipos tecnológicos y materiales de laboratorio.
+
+7. Módulo Administrativo y Seguridad (Responsable: Jonathan Colmenares, Johan López)
+Gestión de Roles y Permisos: Asignar roles específicos (administrador, docente, estudiante, personal administrativo) y definir niveles de acceso basados en permisos de usuario para cada módulo del sistema.
+
+Autenticación y Autorización: Implementar mecanismos seguros de inicio de sesión, recuperación de contraseñas y verificación de identidad utilizando Spring Security u otras estrategias.
+
+Corrección de Errores y Testing: Validar el funcionamiento correcto de los módulos a través de pruebas unitarias e integración, resolviendo conflictos lógicos o de persistencia, especialmente asociados a la base de datos.
 
 ---
 

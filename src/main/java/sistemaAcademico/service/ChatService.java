@@ -22,4 +22,7 @@ public interface ChatService extends CrudService<Chat, Long> {
 
     Optional<Chat> obtenerChatEntreUsuarios(Usuario u1, Usuario u2);
 
+    Chat crearChat(Chat chat);
+
+    List<Chat> obtenerChatsPorUsuario(Long usuarioId);
 }

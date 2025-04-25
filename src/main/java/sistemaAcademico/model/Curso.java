@@ -3,6 +3,7 @@ package sistemaAcademico.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -66,6 +67,8 @@ public class Curso {
     private String objetivo;
     private String competencia;
 
+    private int cuposDisponibles;
+
     // Agregando la relación con AsignacionDocente
     @OneToMany(mappedBy = "curso")
     private List<AsignacionDocente> asignaciones;
@@ -86,10 +89,50 @@ public class Curso {
     @OneToMany(mappedBy = "codigoCurso")
     private List<Horario> horarios;
 
+    @ManyToOne
+    @JoinColumn(name = "codigo_prerrequisito")
+    private Curso codigoPrerrequisito;
+    public Curso getCodigoPrerrequisito() {
+        return codigoPrerrequisito;
+    }
 
+<<<<<<< HEAD
+    public void setCodigoPrerrequisito(Curso codigoPrerrequisito) {
+        this.codigoPrerrequisito = codigoPrerrequisito;
+    }
+
+    public int consultarCuposDisponibles() {
+        return cuposDisponibles;
+    }
+
+    public boolean validarCupos() {
+        return cuposDisponibles > 0;
+    }
+
+    public void actualizarCupos() {
+        if (cuposDisponibles > 0) {
+            cuposDisponibles--;
+        } else {
+            throw new IllegalStateException("No hay cupos disponibles");
+        }
+    }
+
+    public List<Curso> generarReporteCursosAprobados() {
+        List<Curso> cursosAprobados = new ArrayList<>();
+        if (cursoHistorial != null) {
+            for (CursoHistorial ch : cursoHistorial) {
+                if (ch.getEstadoCurso() == EstadoCurso.APROBADO) {
+                    cursosAprobados.add(ch.getCurso());
+                }
+            }
+        }
+        return cursosAprobados;
+    }
+=======
     // Nuevos campos
     private int cupoMaximo;   // Límite de cupos
     private int cupoActual;
+>>>>>>> 2c256cef2010f85f4e1b4e0a4d5a308ca6ec3047
 
 
 }

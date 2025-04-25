@@ -3,13 +3,16 @@ package sistemaAcademico.service;
 import org.springframework.stereotype.Service;
 import sistemaAcademico.model.Foro;
 
+import java.util.Date;
+import java.util.List;
+
 @Service
 public interface ForoService extends CrudService<Foro, Long> {
 
-    //public List<Foro> findByTitulo(String titulo);
+    List<Foro> findByTitulo(String titulo) throws Exception;
 
-    //public List<Foro> findByDescripcion(String descripcion);
+    List<Foro> findByDescripcion(String descripcion) throws Exception;
 
-    //public List<Foro> findByfechaCreacion(Date fechaCreacion);
+    List<Foro> findByFechaCreacion(Date fechaCreacion) throws Exception;
 
 }

@@ -1,6 +1,7 @@
 package sistemaAcademico.controllers;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import sistemaAcademico.model.Mensaje;
 import sistemaAcademico.service.MensajeService;
@@ -27,8 +28,10 @@ public class MensajeController {
      * Obtiene un mensaje por su ID
      */
     @GetMapping("/{codigoMensaje}")
-    public Optional<Mensaje> getMensajeById(@PathVariable Long codigoMensaje) throws Exception {
-        return mensajeService.findById(codigoMensaje);
+    public ResponseEntity<Mensaje> getMensajeById(@PathVariable Long codigoMensaje) throws Exception {
+        Optional<Mensaje> mensaje = mensajeService.findById(codigoMensaje);
+        return mensaje.map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     /**
@@ -52,38 +55,59 @@ public class MensajeController {
      * Elimina un mensaje por ID
      */
     @DeleteMapping("/{codigoMensaje}")
-    public void deleteMensaje(@PathVariable Long codigoMensaje) throws Exception {
+    public ResponseEntity<Void> deleteMensaje(@PathVariable Long codigoMensaje) throws Exception {
         mensajeService.deleteById(codigoMensaje);
+        return ResponseEntity.noContent().build();
     }
 
     /**
      * Elimina todos los mensajes
      */
     @DeleteMapping
-    public void deleteAllMensajes() throws Exception {
+    public ResponseEntity<Void> deleteAllMensajes() throws Exception {
         mensajeService.deleteAll();
+        return ResponseEntity.noContent().build();
     }
 
-    /*
-    @GetMapping("/buscar/contenido")
-    public List<Mensaje> getMensajesByContenido(@RequestParam String contenido) throws Exception {
-        return mensajeService.findByContenido(contenido);
-    }
-
-    @GetMapping("/buscar/fecha")
-    public List<Mensaje> getMensajesByFechaEnvio(@RequestParam Date fechaEnvio) throws Exception {
-        return mensajeService.findByFechaEnvio(fechaEnvio);
-    }
-    */
-
+    /**
+     * Buscar mensajes por contenido
+     */
     @GetMapping("/buscar/contenido")
     public List<Mensaje> buscarPorContenido(@RequestParam String contenido) throws Exception {
         return mensajeService.findByContenido(contenido);
     }
 
+    /**
+     * Buscar mensajes por chat
+     */
     @GetMapping("/buscar/chat")
     public List<Mensaje> buscarPorChat(@RequestParam Long idChat) throws Exception {
         return mensajeService.findByChatId(idChat);
     }
 
+    /**
+     * Obtener todos los mensajes de un chat específico (vía path variable)
+     */
+    @GetMapping("/chat/{chatId}")
+    public List<Mensaje> getMensajesPorChat(@PathVariable Long chatId) throws Exception {
+        return mensajeService.obtenerMensajesPorChat(chatId);
+    }
+
+    /**
+     * Enviar un nuevo mensaje
+     */
+    @PostMapping("/enviar")
+    public ResponseEntity<Mensaje> enviarMensaje(@RequestBody Mensaje mensaje) throws Exception {
+        Mensaje enviado = mensajeService.enviarMensaje(mensaje);
+        return ResponseEntity.ok(enviado);
+    }
+
+    /**
+     * Eliminar un mensaje por su ID (otra variante)
+     */
+    @DeleteMapping("/eliminar/{mensajeId}")
+    public ResponseEntity<Void> eliminarMensaje(@PathVariable Long mensajeId) throws Exception {
+        mensajeService.eliminarMensaje(mensajeId);
+        return ResponseEntity.noContent().build();
+    }
 }
