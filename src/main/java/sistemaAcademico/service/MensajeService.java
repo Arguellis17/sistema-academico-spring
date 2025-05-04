@@ -5,15 +5,14 @@ import sistemaAcademico.model.Mensaje;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public interface MensajeService extends CrudService<Mensaje, Long> {
 
-    //public List<Mensaje> findByContenido(String contenido);
-
-    //public List<Mensaje> findByFechaEnvio(Date fechaEnvio);
-
     Mensaje enviarMensaje(Mensaje mensaje) throws Exception;
+
+    Optional<Mensaje> findById(Long id) throws Exception;
 
     List<Mensaje> recibirMensajes(Long idReceptor) throws Exception;
 

@@ -24,8 +24,7 @@ public class MensajeServiceImpl implements MensajeService{
         return mensajeRepository.findAll();
     }
 
-    @Override
-    public Semestre findById(Long id) throws Exception {
+    public Optional<Mensaje> findById(Long id) throws Exception {
         return mensajeRepository.findById(id);
     }
 
@@ -98,6 +97,11 @@ public class MensajeServiceImpl implements MensajeService{
             }
         }
         return mensajes;
+    }
+
+    public Optional<Mensaje> findById(long codigoMensaje){
+        return mensajeRepository.findById(codigoMensaje);
+
     }
 
     @Override
