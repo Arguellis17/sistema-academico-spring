@@ -1,6 +1,5 @@
 package sistemaAcademico.service;
 
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import sistemaAcademico.model.Rol;
@@ -13,7 +12,6 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-@AllArgsConstructor
 public abstract class RolService {
 
     private final UsuarioRepository usuarioRepository;
