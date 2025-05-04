@@ -75,4 +75,15 @@ public class ReservaEspacioController {
 
         return reservaEspacioService.existeTraslape(espacioId, fechaInicio, fechaFin);
     }
+
+    @GetMapping("/usuario/{codigoUsuario}")
+    public List<ReservaEspacio> getByUsuario(@PathVariable Long codigoUsuario) {
+        return reservaEspacioService.findByUsuario(codigoUsuario);
+    }
+
+    @GetMapping("/estado/{estado}")
+    public List<ReservaEspacio> getByEstado(@PathVariable String estado) {
+        return reservaEspacioService.findByEstado(estado);
+    }
+
 }

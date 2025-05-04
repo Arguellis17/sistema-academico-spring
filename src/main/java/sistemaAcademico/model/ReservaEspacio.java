@@ -21,4 +21,11 @@ public class ReservaEspacio {
     private LocalDateTime fechaInicio;
     private LocalDateTime fechaFin;
     private String motivo;
+
+    @ManyToOne
+    @JoinColumn(name = "codigo_usuario")
+    private Usuario usuario;
+
+    private String estado; // Ej: "pendiente", "aprobada", "rechazada"
+
 }

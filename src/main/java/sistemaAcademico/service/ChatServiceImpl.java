@@ -3,7 +3,6 @@ package sistemaAcademico.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import sistemaAcademico.model.Chat;
-import sistemaAcademico.model.Semestre;
 import sistemaAcademico.model.Usuario;
 import sistemaAcademico.repository.ChatRepository;
 
@@ -22,8 +21,7 @@ public class ChatServiceImpl implements ChatService {
         return chatRepository.findAll();
     }
 
-    @Override
-    public Semestre findById(Long id) throws Exception {
+    public Optional<Chat> findById(Long id) throws Exception {
         return chatRepository.findById(id);
     }
 
@@ -49,10 +47,11 @@ public class ChatServiceImpl implements ChatService {
 
     @Override
     public Chat crearChat(Chat chat) {
-        Optional<Chat> existente = obtenerChatEntreUsuarios(chat.getCodigoUsuario1(), chat.getCodigoUsuario2());
+        // Buscamos si ya existe un chat entre los dos usuarios, sin importar el orden
+        Optional<Chat> existente = chatRepository.findByUsuarios(chat.getCodigoUsuario1(), chat.getCodigoUsuario2());
 
         if (existente.isPresent()) {
-            return existente.get(); // Si ya existe un chat entre ellos, lo retornamos
+            return existente.get(); // Si ya existe, lo retornamos
         }
 
         chat.setFechaCreacion(new Date());
