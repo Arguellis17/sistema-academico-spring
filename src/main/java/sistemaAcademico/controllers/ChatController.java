@@ -5,11 +5,11 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import sistemaAcademico.model.Chat;
+import sistemaAcademico.model.Semestre;
 import sistemaAcademico.service.ChatService;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/chats")
@@ -32,7 +32,7 @@ public class ChatController {
      * Obtener un chat por su ID
      */
     @GetMapping("/{codigoChat}")
-    public Optional<Chat> getChatById(@PathVariable Long codigoChat) throws Exception {
+    public Semestre getChatById(@PathVariable Long codigoChat) throws Exception {
         return chatService.findById(codigoChat);
     }
 

@@ -1,26 +1,32 @@
 package sistemaAcademico.service;
 
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import sistemaAcademico.model.Rol;
-import sistemaAcademico.model.Semestre;
 import sistemaAcademico.repository.RolRepository;
+import sistemaAcademico.repository.UsuarioRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class RolServiceImpl implements RolService{
+public class RolServiceImpl extends RolService {
 
     private final RolRepository rolRepository;
+
+    public RolServiceImpl(UsuarioRepository usuarioRepository, RolRepository rolRepository, RolRepository rolRepository1) {
+        super(usuarioRepository, rolRepository);
+        this.rolRepository = rolRepository1;
+    }
 
     @Override
     public List<Rol> findAll() throws Exception {
         return rolRepository.findAll();
     }
 
-    @Override
-    public Semestre findById(Long id) throws Exception {
+    public Optional<Rol> findById(Long id) throws Exception {
         return rolRepository.findById(id);
     }
 

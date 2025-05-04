@@ -96,7 +96,7 @@ public class Curso {
         return codigoPrerrequisito;
     }
 
-<<<<<<< HEAD
+
     public void setCodigoPrerrequisito(Curso codigoPrerrequisito) {
         this.codigoPrerrequisito = codigoPrerrequisito;
     }
@@ -128,11 +128,11 @@ public class Curso {
         }
         return cursosAprobados;
     }
-=======
+
     // Nuevos campos
     private int cupoMaximo;   // Límite de cupos
     private int cupoActual;
->>>>>>> 2c256cef2010f85f4e1b4e0a4d5a308ca6ec3047
+
 
 
 }
