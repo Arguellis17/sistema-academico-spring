@@ -8,4 +8,7 @@ public interface ReservaEspacioRepository extends JpaRepository<ReservaEspacio, 
     List<ReservaEspacio> findByEspacioCodigoEspacio(Long codigoEspacio);
     List<ReservaEspacio> findByUsuarioCodigoUsuario(Long codigoUsuario);
     List<ReservaEspacio> findByEspacioCodigoEspacioAndEstado(Long codigoEspacio, String estado);
+    List<ReservaEspacio> findByEstado(String estado);// Para listar todas las "pendientes", por ejemplo
+    List<ReservaEspacio> findByUsuario(Long codigoUsuario); // <-- si usas este también
+
 }
