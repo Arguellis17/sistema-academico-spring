@@ -5,6 +5,7 @@ import sistemaAcademico.model.Evaluacion;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public interface EvaluacionService extends CrudService<Evaluacion, Long> {
@@ -16,4 +17,5 @@ public interface EvaluacionService extends CrudService<Evaluacion, Long> {
     public List<Evaluacion> findByFechaEvaluacion(Date fechaEvaluacion);
 
 
+    Optional<Evaluacion> findById(Long codigoEvaluacion);
 }

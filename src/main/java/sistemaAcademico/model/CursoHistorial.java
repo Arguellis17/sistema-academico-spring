@@ -8,9 +8,6 @@ import lombok.*;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-
-
-
 public class CursoHistorial {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

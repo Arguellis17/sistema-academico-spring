@@ -30,6 +30,6 @@ public interface ReservaEspacioService extends CrudService<ReservaEspacio, Long>
     List<ReservaEspacio> findByUsuario(Long codigoUsuario);
 
     List<ReservaEspacio> findByEstado(String estado);
-  
+
 
 }
